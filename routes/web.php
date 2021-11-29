@@ -14,10 +14,12 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+// need change
 Route::get('/', function () {
     return view('welcome');
 });
 
+// Auth
 Auth::routes([
     'register' => false,
     'reset' => false,
@@ -25,4 +27,9 @@ Auth::routes([
     'verify' => false,
 ]);
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+// Admin
+Route::group([
+    'prefix'=>'admin',
+    'middleware' => 'auth'], function () {
+    Route::get('/', [App\Http\Controllers\Admin\MainController::class, 'index'])->name('admin');
+});
