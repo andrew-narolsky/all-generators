@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <title>Bootstrap 4 Admin Dashboard</title>
+    <title>Admin Dashboard</title>
     <meta content='width=device-width, initial-scale=1.0, shrink-to-fit=no' name='viewport' />
     <link rel="icon" href="{{ asset('admin/img/icon.ico') }}" type="image/x-icon"/>
 
@@ -24,7 +24,8 @@
 </head>
 <body>
 <div class="wrapper">
-    <div class="main-header">
+    @auth()
+        <div class="main-header">
         <!-- Logo Header -->
         <div class="logo-header" data-background-color="blue">
 
@@ -102,9 +103,8 @@
         </nav>
         <!-- End Navbar -->
     </div>
-
     <!-- Sidebar -->
-    <div class="sidebar sidebar-style-2">
+        <div class="sidebar sidebar-style-2">
         <div class="sidebar-wrapper scrollbar scrollbar-inner">
             <div class="sidebar-content">
                 <div class="user">
@@ -406,10 +406,12 @@
             </div>
         </div>
     </div>
+    @endauth
     <!-- End Sidebar -->
     @yield('content')
     <!-- Custom template | don't include it in your project! -->
-    <div class="custom-template">
+    @auth()
+        <div class="custom-template">
         <div class="title">Settings</div>
         <div class="custom-content">
             <div class="switcher">
@@ -479,6 +481,7 @@
         </div>
     </div>
     <!-- End Custom template -->
+    @endauth
 </div>
 <!--   Core JS Files   -->
 <script src="{{ asset('admin/js/core/jquery.3.2.1.min.js') }}"></script>
