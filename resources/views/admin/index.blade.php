@@ -1,5 +1,7 @@
 @extends('admin.master')
 
+@section('title', 'AdminPanel')
+
 @section('content')
     <div class="main-panel">
         <div class="content">

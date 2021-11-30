@@ -32,4 +32,10 @@ Route::group([
     'prefix'=>'admin',
     'middleware' => 'auth'], function () {
     Route::get('/', [App\Http\Controllers\Admin\MainController::class, 'index'])->name('admin');
+
+    Route::group(['prefix' => 'conclusion-generator'], function ()
+    {
+        Route::get('', [App\Http\Controllers\Admin\ConclusionGeneratorController::class, 'index'])->name('admin.conclusion-generator.index');
+        Route::get('{id}', [App\Http\Controllers\Admin\ConclusionGeneratorController::class, 'show'])->name('admin.conclusion-generator.show');
+    });
 });
