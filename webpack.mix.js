@@ -14,6 +14,8 @@ const mix = require('laravel-mix');
 // backend
 mix.styles([
     'resources/backend/css/style.css',
+    'resources/backend/css/header.css',
+    'resources/backend/css/footer.css',
 ], 'public/backend/css/style.min.css');
 
 mix.scripts([
