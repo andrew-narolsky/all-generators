@@ -27,6 +27,13 @@ Auth::routes([
     'verify' => false,
 ]);
 
+// Conclusion generator
+Route::group(['prefix' => 'conclusion-generator'], function ()
+{
+    Route::get('/', [App\Http\Controllers\ConclusionGenerator\ConclusionGeneratorController::class, 'index']);
+    Route::post('/summarize-text', [App\Http\Controllers\ConclusionGenerator\ConclusionGeneratorController::class, 'summarizeText']);
+});
+
 // Admin
 Route::group([
     'prefix'=>'admin',

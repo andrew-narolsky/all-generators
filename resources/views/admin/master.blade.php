@@ -3,14 +3,16 @@
 <head>
     <title>@yield('title')</title>
     <meta content='width=device-width, initial-scale=1.0, shrink-to-fit=no' name='viewport' />
-    <link rel="icon" href="{{ asset('admin/img/icon.ico') }}" type="image/x-icon"/>
+
+    <!-- Favicons -->
+    <link rel="icon" href="{{ asset('/admin/img/icon.ico') }}" type="image/x-icon"/>
 
     <!-- Fonts and icons -->
-    <script src="{{ asset('admin/js/plugin/webfont/webfont.min.js') }}"></script>
+    <script src="{{ asset('/admin/js/plugin/webfont/webfont.min.js') }}"></script>
     <script>
         WebFont.load({
             google: {"families":["Lato:300,400,700,900"]},
-            custom: {"families":["Flaticon", "Font Awesome 5 Solid", "Font Awesome 5 Regular", "Font Awesome 5 Brands", "simple-line-icons"], urls: ['admin/css/fonts.min.css']},
+            custom: {"families":["Flaticon", "Font Awesome 5 Solid", "Font Awesome 5 Regular", "Font Awesome 5 Brands", "simple-line-icons"], urls: ['/admin/css/fonts.min.css']},
             active: function() {
                 sessionStorage.fonts = true;
             }
@@ -18,8 +20,8 @@
     </script>
 
     <!-- CSS Files -->
-    <link rel="stylesheet" href="{{ asset('admin/css/bootstrap.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('admin/css/atlantis.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('/admin/css/bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('/admin/css/atlantis.min.css') }}">
 </head>
 <body>
 <div class="wrapper">
@@ -29,12 +31,12 @@
         <div class="logo-header" data-background-color="blue">
 
             <a href="{{ route('admin') }}" class="logo">
-                <img src="{{ asset('admin/img/logo.svg') }}" alt="navbar brand" class="navbar-brand">
+                <img src="{{ asset('/admin/img/logo.svg') }}" alt="navbar brand" class="navbar-brand">
             </a>
             <button class="navbar-toggler sidenav-toggler ml-auto" type="button" data-toggle="collapse" data-target="collapse" aria-expanded="false" aria-label="Toggle navigation">
-					<span class="navbar-toggler-icon">
-						<i class="icon-menu"></i>
-					</span>
+                <span class="navbar-toggler-icon">
+                    <i class="icon-menu"></i>
+                </span>
             </button>
             <button class="topbar-toggler more"><i class="icon-options-vertical"></i></button>
             <div class="nav-toggle">
@@ -70,14 +72,14 @@
                     <li class="nav-item dropdown hidden-caret">
                         <a class="dropdown-toggle profile-pic" data-toggle="dropdown" href="#" aria-expanded="false">
                             <div class="avatar-sm">
-                                <img src="{{ asset('admin/img/profile.jpg') }}" alt="..." class="avatar-img rounded-circle">
+                                <img src="{{ asset('/admin/img/profile.jpg') }}" alt="..." class="avatar-img rounded-circle">
                             </div>
                         </a>
                         <ul class="dropdown-menu dropdown-user animated fadeIn">
                             <div class="dropdown-user-scroll scrollbar-outer">
                                 <li>
                                     <div class="user-box">
-                                        <div class="avatar-lg"><img src="{{ asset('admin/img/profile.jpg') }}" alt="image profile" class="avatar-img rounded"></div>
+                                        <div class="avatar-lg"><img src="{{ asset('/admin/img/profile.jpg') }}" alt="image profile" class="avatar-img rounded"></div>
                                         <div class="u-text">
                                             <h4>Hizrian</h4>
                                             <p class="text-muted">hello@example.com</p>
@@ -108,7 +110,7 @@
             <div class="sidebar-content">
                 <div class="user">
                     <div class="avatar-sm float-left mr-2">
-                        <img src="{{ asset('admin/img/profile.jpg') }}" alt="..." class="avatar-img rounded-circle">
+                        <img src="{{ asset('/admin/img/profile.jpg') }}" alt="..." class="avatar-img rounded-circle">
                     </div>
                     <div class="info">
                         <a data-toggle="collapse" href="#collapseExample" aria-expanded="true">
@@ -143,16 +145,32 @@
                 </div>
                 <ul class="nav nav-primary">
                     <li class="nav-item active">
-                        <a data-toggle="collapse" href="#dashboard" class="collapsed" aria-expanded="false">
+                        <a data-toggle="collapse" href="#generators" class="collapsed" aria-expanded="false">
                             <i class="fas fa-cogs"></i>
                             <p>Generators</p>
                             <span class="caret"></span>
                         </a>
-                        <div class="collapse" id="dashboard">
+                        <div class="collapse" id="generators">
                             <ul class="nav nav-collapse">
                                 <li>
                                     <a href="{{ route('admin.conclusion-generator.index') }}">
-                                        <span class="sub-item">Conclusion generator</span>
+                                        <span class="sub-item">{{ __('Conclusion generator') }}</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li class="nav-item active">
+                        <a data-toggle="collapse" href="#blocks" class="collapsed" aria-expanded="false">
+                            <i class="far fa-window-restore"></i>
+                            <p>Blocks</p>
+                            <span class="caret"></span>
+                        </a>
+                        <div class="collapse" id="blocks">
+                            <ul class="nav nav-collapse">
+                                <li>
+                                    <a href="{{ route('admin.conclusion-generator.index') }}">
+                                        <span class="sub-item">{{ __('Conclusion generator') }}</span>
                                     </a>
                                 </li>
                             </ul>
@@ -240,25 +258,25 @@
     @endauth
 </div>
 <!--   Core JS Files   -->
-<script src="{{ asset('admin/js/core/jquery.3.2.1.min.js') }}"></script>
-<script src="{{ asset('admin/js/core/popper.min.js') }}"></script>
-<script src="{{ asset('admin/js/core/bootstrap.min.js') }}"></script>
+<script src="{{ asset('/admin/js/core/jquery.3.2.1.min.js') }}"></script>
+<script src="{{ asset('/admin/js/core/popper.min.js') }}"></script>
+<script src="{{ asset('/admin/js/core/bootstrap.min.js') }}"></script>
 
 <!-- jQuery UI -->
-<script src="{{ asset('admin/js/plugin/jquery-ui-1.12.1.custom/jquery-ui.min.js') }}"></script>
-<script src="{{ asset('admin/js/plugin/jquery-ui-touch-punch/jquery.ui.touch-punch.min.js') }}"></script>
+<script src="{{ asset('/admin/js/plugin/jquery-ui-1.12.1.custom/jquery-ui.min.js') }}"></script>
+<script src="{{ asset('/admin/js/plugin/jquery-ui-touch-punch/jquery.ui.touch-punch.min.js') }}"></script>
 
 <!-- jQuery Scrollbar -->
-<script src="{{ asset('admin/js/plugin/jquery-scrollbar/jquery.scrollbar.min.js') }}"></script>
+<script src="{{ asset('/admin/js/plugin/jquery-scrollbar/jquery.scrollbar.min.js') }}"></script>
 
 <!-- Datatables -->
-<script src="{{ asset('admin/js/plugin/datatables/datatables.min.js') }}"></script>
+<script src="{{ asset('/admin/js/plugin/datatables/datatables.min.js') }}"></script>
 
 <!-- Atlantis JS -->
-<script src="{{ asset('admin/js/atlantis.min.js') }}"></script>
+<script src="{{ asset('/admin/js/atlantis.min.js') }}"></script>
 
 <!-- Atlantis DEMO methods, don't include it in your project! -->
-<script src="{{ asset('admin/js/setting-demo.js') }}"></script>
+<script src="{{ asset('/admin/js/setting-demo.js') }}"></script>
 
 </body>
 </html>

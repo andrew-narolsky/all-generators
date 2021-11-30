@@ -6,7 +6,21 @@
     <div class="main-panel">
         <div class="content">
             <div class="panel-header bg-primary-gradient">
-                <div class="page-inner py-5"></div>
+                <div class="page-inner py-5 text-right">
+                    <ul class="breadcrumbs" style="color: #fff">
+                        <li class="nav-home">
+                            <a href="{{ route('admin') }}" style="color: #fff">
+                                <i class="fas fa-home"></i>
+                            </a>
+                        </li>
+                        <li class="separator">
+                            <i class="flaticon-right-arrow"></i>
+                        </li>
+                        <li class="nav-item">
+                            <span>{{ __('Conclusions generator') }}</span>
+                        </li>
+                    </ul>
+                </div>
             </div>
             <div class="page-inner mt--5">
                 <div class="row">
@@ -35,7 +49,9 @@
                                                     <td>{{$conclusion->created_at->format('d.m.Y')}}</td>
                                                     <td>{{$conclusion->title}}</td>
                                                     <td>
-                                                        <a href="{{ route('admin.conclusion-generator.show', $conclusion->id) }}" class="btn btn-primary  btn-xs edit page_block_delete" id="edit"><i class="fa fa-eye"></i></a>
+                                                        <a href="{{ route('admin.conclusion-generator.show', $conclusion->id) }}" class="btn btn-primary  btn-xs edit page_block_delete" id="edit">
+                                                            <i class="fas fa-eye"></i>
+                                                        </a>
                                                     </td>
                                                 </tr>
                                             @endforeach
