@@ -21,7 +21,7 @@
 
     <!-- CSS Files -->
     <link rel="stylesheet" href="{{ asset('/admin/css/bootstrap.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('/admin/css/atlantis.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('/admin/css/atlantis.css') }}">
 </head>
 <body>
 <div class="wrapper">
@@ -79,16 +79,18 @@
                             <div class="dropdown-user-scroll scrollbar-outer">
                                 <li>
                                     <div class="user-box">
-                                        <div class="avatar-lg"><img src="{{ asset('/admin/img/profile.jpg') }}" alt="image profile" class="avatar-img rounded"></div>
+                                        <div class="avatar-lg">
+                                            <img src="{{ asset('/admin/img/profile.jpg') }}" alt="image profile" class="avatar-img rounded">
+                                        </div>
                                         <div class="u-text">
-                                            <h4>Hizrian</h4>
-                                            <p class="text-muted">hello@example.com</p>
+                                            <h4>{{ env('ADMIN_NAME') }}</h4>
+                                            <p class="text-muted">{{ env('ADMIN_EMAIL') }}</p>
                                         </div>
                                     </div>
                                 </li>
                                 <li>
                                     <div class="dropdown-divider"></div>
-                                    <a class="dropdown-item" href="#">Account Setting</a>
+                                    <a class="dropdown-item" href="#">{{ __('Account Setting') }}</a>
                                     <div class="dropdown-divider"></div>
                                     <a href="{{ route('logout') }}" class="dropdown-item"
                                        onclick="document.getElementById('logout-form').submit(); return false;">{{ __('Log out') }}</a>
@@ -114,29 +116,20 @@
                     </div>
                     <div class="info">
                         <a data-toggle="collapse" href="#collapseExample" aria-expanded="true">
-								<span>
-									Hizrian
-									<span class="user-level">Administrator</span>
-									<span class="caret"></span>
-								</span>
+                            <span>
+                                {{ env('ADMIN_NAME') }}
+                                <span class="user-level">{{ __('Administrator') }}</span>
+                                <span class="caret"></span>
+                            </span>
                         </a>
                         <div class="clearfix"></div>
-
                         <div class="collapse in" id="collapseExample">
                             <ul class="nav">
                                 <li>
-                                    <a href="#profile">
-                                        <span class="link-collapse">My Profile</span>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#edit">
-                                        <span class="link-collapse">Edit Profile</span>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#settings">
-                                        <span class="link-collapse">Settings</span>
+                                    <a href="{{ url('/') }}">
+                                        <span class="link-collapse">
+                                            <span><i class="fas fa-home"></i> {{ __('Home') }}</span>
+                                        </span>
                                     </a>
                                 </li>
                             </ul>
@@ -146,8 +139,8 @@
                 <ul class="nav nav-primary">
                     <li class="nav-item active">
                         <a data-toggle="collapse" href="#generators" class="collapsed" aria-expanded="false">
-                            <i class="fas fa-cogs"></i>
-                            <p>Generators</p>
+                            <i class="fas fa-globe"></i>
+                            <p>{{ __('Generators') }}</p>
                             <span class="caret"></span>
                         </a>
                         <div class="collapse" id="generators">
@@ -161,16 +154,54 @@
                         </div>
                     </li>
                     <li class="nav-item active">
-                        <a data-toggle="collapse" href="#blocks" class="collapsed" aria-expanded="false">
-                            <i class="far fa-window-restore"></i>
-                            <p>Blocks</p>
+                        <a data-toggle="collapse" href="#pages" class="collapsed" aria-expanded="false">
+                            <i class="fas fa-file-alt"></i>
+                            <p>{{ __('Pages') }}</p>
                             <span class="caret"></span>
                         </a>
-                        <div class="collapse" id="blocks">
+                        <div class="collapse" id="pages">
                             <ul class="nav nav-collapse">
                                 <li>
-                                    <a href="{{ route('admin.conclusion-generator.index') }}">
-                                        <span class="sub-item">{{ __('Conclusion generator') }}</span>
+                                    <a href="{{ route('pages.create') }}">
+                                        <span class="sub-item">{{ __('New page') }}</span>
+                                    </a>
+                                    <a href="{{ route('pages.index') }}">
+                                        <span class="sub-item">{{ __('All pages') }}</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li class="nav-item active">
+                        <a data-toggle="collapse" href="#templates" class="collapsed" aria-expanded="false">
+                            <i class="fas fa-folder-open"></i>
+                            <p>{{ __('Templates') }}</p>
+                            <span class="caret"></span>
+                        </a>
+                        <div class="collapse" id="templates">
+                            <ul class="nav nav-collapse">
+                                <li>
+                                    <a href="{{ route('templates.create') }}">
+                                        <span class="sub-item">{{ __('New template') }}</span>
+                                    </a>
+                                    <a href="{{ route('templates.index') }}">
+                                        <span class="sub-item">{{ __('All templates') }}</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li class="nav-item active">
+                        <a data-toggle="collapse" href="#settings" class="collapsed" aria-expanded="false">
+                            <i class="fas fa-cogs"></i>
+                            <p>{{ __('Settings') }}</p>
+                            <span class="caret"></span>
+                        </a>
+                        <div class="collapse" id="settings">
+                            <ul class="nav nav-collapse">
+                                <li>
+                                    <a href="{{ route('settings.index') }}">
+                                        <span class="sub-item">{{ __('Settings') }}</span>
                                     </a>
                                 </li>
                             </ul>
@@ -254,6 +285,9 @@
             <i class="flaticon-settings"></i>
         </div>
     </div>
+    <div class="loader-wrap">
+        <img src="{{ asset('/admin/img/loader.svg') }}" alt="">
+    </div>
     <!-- End Custom template -->
     @endauth
 </div>
@@ -269,14 +303,21 @@
 <!-- jQuery Scrollbar -->
 <script src="{{ asset('/admin/js/plugin/jquery-scrollbar/jquery.scrollbar.min.js') }}"></script>
 
-<!-- Datatables -->
-<script src="{{ asset('/admin/js/plugin/datatables/datatables.min.js') }}"></script>
+<!-- Sweet Alert -->
+<script src="{{ asset('/admin/js/plugin/sweetalert/sweetalert.min.js') }}"></script>
 
 <!-- Atlantis JS -->
 <script src="{{ asset('/admin/js/atlantis.min.js') }}"></script>
 
 <!-- Atlantis DEMO methods, don't include it in your project! -->
 <script src="{{ asset('/admin/js/setting-demo.js') }}"></script>
+
+<!-- Сkeditor -->
+<script src="{{ asset('/admin/plugins/ckeditor/ckeditor.js') }}"></script>
+<script src="{{ asset('/admin/plugins/ckfinder/ckfinder.js') }}"></script>
+
+<!-- Scripts -->
+<script src="{{ asset('/admin/js/script.js') }}"></script>
 
 </body>
 </html>

@@ -79,7 +79,7 @@ ConclusionGenerator.prototype.onSubmitConclusionGenerator = function(event)
     this.values.origWords = this.fields.text.val().split(' ').length;
     $('.loader').css({'display': 'block', 'opacity': .7});
 
-    $.post('/conclusion-generator/summarize-text', data, function(data) {
+    $.post('/summarize-text', data, function(data) {
         $('.loader').css({'display': 'none', 'opacity': 0});
         $this.setValues(data);
         $this.submit.prop('disabled', false);

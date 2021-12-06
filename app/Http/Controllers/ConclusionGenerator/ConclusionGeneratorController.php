@@ -12,11 +12,6 @@ class ConclusionGeneratorController extends Controller
     const MINIMUM_SENTENCES_LIMIT = 5;
     const MINIMUM_WORDS_LIMIT = 200;
 
-    public function index()
-    {
-        return view('backend.conclusion-generator.index');
-    }
-
     public function summarizeText(Request $request)
     {
         $data = $request->only('title', 'text', 'count');

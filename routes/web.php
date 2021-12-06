@@ -16,7 +16,7 @@ use Illuminate\Support\Facades\Route;
 
 // need change
 Route::get('/', function () {
-    return view('welcome');
+    return view('welcome')->name('home');
 });
 
 // Auth
@@ -28,11 +28,7 @@ Auth::routes([
 ]);
 
 // Conclusion generator
-Route::group(['prefix' => 'conclusion-generator'], function ()
-{
-    Route::get('/', [App\Http\Controllers\ConclusionGenerator\ConclusionGeneratorController::class, 'index']);
-    Route::post('/summarize-text', [App\Http\Controllers\ConclusionGenerator\ConclusionGeneratorController::class, 'summarizeText']);
-});
+Route::post('/summarize-text', [App\Http\Controllers\ConclusionGenerator\ConclusionGeneratorController::class, 'summarizeText']);
 
 // Admin
 Route::group([
@@ -45,4 +41,15 @@ Route::group([
         Route::get('', [App\Http\Controllers\Admin\ConclusionGeneratorController::class, 'index'])->name('admin.conclusion-generator.index');
         Route::get('{id}', [App\Http\Controllers\Admin\ConclusionGeneratorController::class, 'show'])->name('admin.conclusion-generator.show');
     });
+
+    Route::resource('/pages', App\Http\Controllers\Admin\PageController::class, ['only' => ['index', 'create', 'store', 'edit', 'update', 'destroy']]);
+    Route::resource('/templates', App\Http\Controllers\Admin\TemplateController::class, ['only' => ['index', 'create', 'store', 'edit', 'update', 'destroy']]);
+
+    Route::post('/add-block', [App\Http\Controllers\Admin\TemplateController::class, 'addBlock']);
+    Route::post('/delete-block', [App\Http\Controllers\Admin\TemplateController::class, 'deleteBlock']);
+
+    Route::resource('/settings', App\Http\Controllers\Admin\SettingsController::class, ['only' => ['index','store']]);
 });
+
+// Pages
+Route::get('/{pages}', [App\Http\Controllers\PageController::class, 'index'])->name('page');

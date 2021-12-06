@@ -17,7 +17,7 @@
                             <i class="flaticon-right-arrow"></i>
                         </li>
                         <li class="nav-item">
-                            <span>{{ __('Conclusions generator') }}</span>
+                            <span>{{ __('Conclusion generator') }}</span>
                         </li>
                     </ul>
                 </div>
@@ -27,7 +27,7 @@
                     <div class="col-12">
                         <div class="card">
                             <div class="card-header">
-                                <div class="card-title">{{ __('Conclusions generator') }}</div>
+                                <div class="card-title">{{ __('Conclusion generator') }}</div>
                             </div>
                             <div class="card-body">
                                 @if(!$conclusions->count())
@@ -46,8 +46,8 @@
                                         <tbody>
                                             @foreach($conclusions as $conclusion)
                                                 <tr>
-                                                    <td>{{$conclusion->created_at->format('d.m.Y')}}</td>
-                                                    <td>{{$conclusion->title}}</td>
+                                                    <td>{{ $conclusion->created_at->format('d.m.Y') }}</td>
+                                                    <td>{{ $conclusion->title }}</td>
                                                     <td>
                                                         <a href="{{ route('admin.conclusion-generator.show', $conclusion->id) }}" class="btn btn-primary  btn-xs edit page_block_delete" id="edit">
                                                             <i class="fas fa-eye"></i>
