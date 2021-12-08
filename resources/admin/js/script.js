@@ -121,4 +121,11 @@
             }
         });
     });
+
+    $('ul.nav.nav-collapse a').each(function () {
+        if ($(this)[0].href == document.location.href) {
+            $(this).closest('.collapse').addClass('show');
+            $(this).closest('.nav-item.active').find('a[data-toggle="collapse"]').removeClass('collapsed');
+        }
+    });
 })();
