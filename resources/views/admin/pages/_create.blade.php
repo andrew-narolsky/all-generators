@@ -49,13 +49,26 @@
                                         <label for="exampleInputTitle" class="input__label">{{ __('Slug') }}</label>
                                         <input type="text" class="form-control input-style" name="slug" value="{{ old('slug') }}">
                                         @error('slug')
-                                        <small class="form-text text-danger">{{ $message }}</small>
+                                            <small class="form-text text-danger">{{ $message }}</small>
+                                        @enderror
+                                    </div>
+                                    <div class="form-group @error('count_votes') has-error @enderror">
+                                        <label for="exampleInputTitle" class="input__label">{{ __('Count votes') }}</label>
+                                        <input type="text" class="form-control input-style" name="count_votes" value="{{ old('count_votes') }}">
+                                        @error('count_votes')
+                                            <small class="form-text text-danger">{{ $message }}</small>
+                                        @enderror
+                                    </div>
+                                    <div class="form-group @error('stars') has-error @enderror">
+                                        <label for="exampleInputTitle" class="input__label">{{ __('Stars') }}</label>
+                                        <input type="text" class="form-control input-style" name="stars" value="{{ old('stars') }}">
+                                        @error('stars')
+                                            <small class="form-text text-danger">{{ $message }}</small>
                                         @enderror
                                     </div>
                                     <div class="form-group">
                                         <label for="exampleFormControlSelect1">{{ __('Template select') }}</label>
                                         <select class="form-control" name="template_id">
-                                            <option value="0">Select value...</option>
                                             @foreach($templates as $template)
                                                 <option value="{{ $template->id }}" @if($template->id == old('template_id')) {{ 'selected' }} @endif>{{ $template->title }}</option>
                                             @endforeach

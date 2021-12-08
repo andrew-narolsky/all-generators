@@ -9,7 +9,7 @@ class Page extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['title', 'slug', 'template_id', 'seo_title', 'seo_description'];
+    protected $fillable = ['title', 'slug', 'template_id', 'count_votes', 'stars', 'seo_title', 'seo_description'];
 
     public function template()
     {

@@ -22,6 +22,7 @@ mix.scripts([
     'resources/backend/js/jquery.js',
     'resources/backend/js/script.js',
     'resources/backend/js/validator.js',
+    'resources/admin/js/plugin/sweetalert/sweetalert.min.js',
     'resources/backend/js/conclusion-generator.js',
 ], 'public/backend/js/script.min.js');
 

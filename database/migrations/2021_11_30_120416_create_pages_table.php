@@ -18,6 +18,8 @@ class CreatePagesTable extends Migration
             $table->string('title');
             $table->string('slug');
             $table->integer('template_id')->default(0);
+            $table->integer('count_votes')->nullable();
+            $table->integer('stars')->nullable();
             $table->string('seo_title')->nullable();
             $table->string('seo_description')->nullable();
             $table->timestamps();

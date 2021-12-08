@@ -4,7 +4,7 @@
             <div class="header__logo">
                 <div class="logo">
                     <span class="logo__link" href="{{ env('APP_MAIN_URL') }}">
-                        <img src="{{ env('APP_MAIN_URL') }}/assets/img/logo.svg" alt="logo" width="113" height="36">
+                        <img src="{{ env('APP_MAIN_URL') }}/assets/img/content/logo.svg" alt="logo" width="113" height="36">
                     </span>
                 </div>
             </div>

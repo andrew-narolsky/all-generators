@@ -29,6 +29,7 @@ Auth::routes([
 
 // Conclusion generator
 Route::post('/summarize-text', [App\Http\Controllers\ConclusionGenerator\ConclusionGeneratorController::class, 'summarizeText']);
+Route::post('/add-vote', [App\Http\Controllers\Admin\PageController::class, 'addVote']);
 
 // Admin
 Route::group([

@@ -48,14 +48,28 @@
                                         <label for="exampleInputTitle" class="input__label">{{ __('Title') }}</label>
                                         <input type="text" class="form-control input-style" name="title" value="{{ $page->title }}">
                                         @error('title')
-                                        <small class="form-text text-danger">{{ $message }}</small>
+                                            <small class="form-text text-danger">{{ $message }}</small>
                                         @enderror
                                     </div>
                                     <div class="form-group @error('title') has-error @enderror">
                                         <label for="exampleInputTitle" class="input__label">{{ __('Slug') }}</label>
                                         <input type="text" class="form-control input-style" name="slug" value="{{ $page->slug }}">
                                         @error('slug')
-                                        <small class="form-text text-danger">{{ $message }}</small>
+                                            <small class="form-text text-danger">{{ $message }}</small>
+                                        @enderror
+                                    </div>
+                                    <div class="form-group @error('count_votes') has-error @enderror">
+                                        <label for="exampleInputTitle" class="input__label">{{ __('Count votes') }}</label>
+                                        <input type="text" class="form-control input-style" name="count_votes" value="{{ $page->count_votes }}">
+                                        @error('count_votes')
+                                            <small class="form-text text-danger">{{ $message }}</small>
+                                        @enderror
+                                    </div>
+                                    <div class="form-group @error('stars') has-error @enderror">
+                                        <label for="exampleInputTitle" class="input__label">{{ __('Stars') }}</label>
+                                        <input type="text" class="form-control input-style" name="stars" value="{{ $page->stars }}">
+                                        @error('stars')
+                                            <small class="form-text text-danger">{{ $message }}</small>
                                         @enderror
                                     </div>
                                     <div class="form-group">

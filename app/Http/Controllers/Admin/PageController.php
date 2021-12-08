@@ -8,6 +8,7 @@ use App\Models\Page;
 use App\Models\Template;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
+use Symfony\Component\HttpFoundation\Response;
 
 class PageController extends Controller
 {
@@ -45,6 +46,8 @@ class PageController extends Controller
         $request->validate([
             'title' => 'required|min:3|max:255',
             'slug' => 'required|min:3|max:255|unique:pages',
+            'count_votes' => 'numeric',
+            'stars' => 'numeric|min:0|max:5',
         ]);
         $page = Page::create($request->all());
         session()->flash('success', 'Page was successfully created!');
@@ -78,6 +81,8 @@ class PageController extends Controller
         $request->validate([
             'title' => 'required|min:3|max:255',
             'slug' => 'required|min:3|max:255|unique:pages,slug,' . $page->id,
+            'count_votes' => 'numeric',
+            'stars' => 'numeric|min:0|max:5',
         ]);
         $page->update($request->all());
         $blocks = [];
@@ -105,5 +110,21 @@ class PageController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function addVote(Request $request)
+    {
+        $page = Page::findorfail($request->page);
+        $count_votes = $page->count_votes + 1;
+        $page->update([
+            'count_votes' => $count_votes
+        ]);
+        return response($count_votes, Response::HTTP_OK);
     }
 }

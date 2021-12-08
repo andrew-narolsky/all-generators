@@ -23,7 +23,7 @@
                 <div class="footer__logo">
                     <div class="logo">
                     <span class="logo__link" href="{{ env('APP_MAIN_URL') }}">
-                        <img src="{{ env('APP_MAIN_URL') }}/assets/img/logo.svg" alt="logo">
+                        <img src="{{ env('APP_MAIN_URL') }}/assets/img/content/logo.svg" alt="logo">
                     </span>
                     </div>
                 </div>
@@ -87,31 +87,19 @@
             <div class="container">
                 <div class="footer__box">
                     <div class="footer__copyright">© GrabMyEssay.com, 2021</div>
-                    <div class="footer__markets">
-                        <a href="https://apps.apple.com/us/app/pingpush/id1569160705" target="_blank">
-                            <object type="image/svg+xml" class="icon" data="/assets/img/app_store.svg" aria-label="app store icon">
-                                <img src="{{ env('APP_MAIN_URL') }}/assets/img/app_store.svg" alt="app store icon">
-                            </object>
-                        </a>
-                        <a href="https://play.google.com/store/apps/details?id=com.applications.pingpush" target="_blank">
-                            <object type="image/svg+xml" class="icon" data="/assets/img/google-play-badge.svg" aria-label="play market icon">
-                                <img src="{{ env('APP_MAIN_URL') }}/assets/img/google-play-badge.svg" alt="play market icon">
-                            </object>
-                        </a>
-                    </div>
                     <div class="footer__payment">
                         <div class="payment">
                             <div class="payment__item">
-                                <img class="payment__image" src="{{ env('APP_MAIN_URL') }}/assets/img/visa.svg" alt="Visa" width="50" height="30">
+                                <img class="payment__image" src="{{ env('APP_MAIN_URL') }}/assets/img/content/visa.svg" alt="Visa" width="50" height="30">
                             </div>
                             <div class="payment__item">
-                                <img class="payment__image" src="{{ env('APP_MAIN_URL') }}/assets/img/mastercard.svg" alt="MasterCard" width="50" height="30">
+                                <img class="payment__image" src="{{ env('APP_MAIN_URL') }}/assets/img/content/mastercard.svg" alt="MasterCard" width="50" height="30">
                             </div>
                             <div class="payment__item">
-                                <img class="payment__image" src="{{ env('APP_MAIN_URL') }}/assets/img/americanexpress.svg" alt="American Express" width="50" height="30">
+                                <img class="payment__image" src="{{ env('APP_MAIN_URL') }}/assets/img/content/americanexpress.svg" alt="American Express" width="50" height="30">
                             </div>
                             <div class="payment__item">
-                                <img class="payment__image" src="{{ env('APP_MAIN_URL') }}/assets/img/discover.svg" alt="Discover Network" width="50" height="30">
+                                <img class="payment__image" src="{{ env('APP_MAIN_URL') }}/assets/img/content/discover.svg" alt="Discover Network" width="50" height="30">
                             </div>
                         </div>
                     </div>
