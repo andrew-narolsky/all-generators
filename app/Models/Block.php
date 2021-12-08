@@ -14,8 +14,8 @@ class Block extends Model
         return $this->belongsTo(Template::class)->withPivot('id');
     }
 
-    public function content()
+    public function content($block_template_id)
     {
-        return $this->belongsTo(BlockContent::class, 'id', 'block_id');
+        return BlockContent::where('block_template_id', $block_template_id)->first();
     }
 }

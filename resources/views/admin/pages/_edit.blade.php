@@ -34,10 +34,16 @@
                         <div class="card">
                             <div class="card-header">
                                 <div class="card-title">{{ __('Edit page') }}</div>
-                                <a href="{{ route('templates.edit', $page->template_id) }}" class="btn btn-success">
-                                    <i class="fas fa-pen"></i>
-                                    {{ __(' Edit template') }}
-                                </a>
+                                <div>
+                                    <a href="{{ route('page', $page->slug) }}" class="btn btn-primary mr-2">
+                                        <i class="fas fa-eye"></i>
+                                        {{ __(' View page') }}
+                                    </a>
+                                    <a href="{{ route('templates.edit', $page->template_id) }}" class="btn btn-success">
+                                        <i class="fas fa-pen"></i>
+                                        {{ __(' Edit template') }}
+                                    </a>
+                                </div>
                             </div>
                             <div class="card-body">
                                 @include('admin._messages')
