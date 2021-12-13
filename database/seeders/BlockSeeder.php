@@ -44,6 +44,11 @@ class BlockSeeder extends Seeder
                 'title' => 'Conclusion generator',
                 'created_at' => date('Y-m-d H:i:s'),
                 'updated_at' => date('Y-m-d H:i:s'),
+            ],
+            [
+                'title' => 'Paraphrasing tool',
+                'created_at' => date('Y-m-d H:i:s'),
+                'updated_at' => date('Y-m-d H:i:s'),
             ]
         ]);
     }

@@ -5,12 +5,14 @@
     <div class="form">
         <div class="wrap">
             <div class="h1">{!! $block_content['title'] ?? null !!}</div>
-            <div class="steps">
-                <div class="item"><span>1.</span> {{ $block_content['step_1'] ?? null }}</div>
-                <div class="item"><span>2.</span> {{ $block_content['step_2'] ?? null }}</div>
-                <div class="item"><span>3.</span> {{ $block_content['step_3'] ?? null }}</div>
-                <div class="item"><span>4.</span> {{ $block_content['step_4'] ?? null }}</div>
-            </div>
+            @if($block_content['step_1'])
+                <div class="steps">
+                    <div class="item"><span>1.</span> {{ $block_content['step_1'] ?? null }}</div>
+                    <div class="item"><span>2.</span> {{ $block_content['step_2'] ?? null }}</div>
+                    <div class="item"><span>3.</span> {{ $block_content['step_3'] ?? null }}</div>
+                    <div class="item"><span>4.</span> {{ $block_content['step_4'] ?? null }}</div>
+                </div>
+            @endif
             <form class="conclusion_generator">
                 @csrf
                 <div class="result">

@@ -273,11 +273,11 @@ button {
     display: block
 }
 
-.result-generator .form .h1, .result-generator .form h1 {
+.form .h1, .form h1 {
     color: #000615
 }
 
-.result-generator .form .h1 span, .result-generator .form h1 span {
+.form .h1 span, .form h1 span {
     color: #00b057
 }
 
@@ -415,7 +415,7 @@ button {
 
 .form .h1, .form h1 {
     max-width: 1000px;
-    color: #d8d8d8
+    /*color: #d8d8d8*/
 }
 
 .form .steps, .form .steps .item {
@@ -436,12 +436,19 @@ button {
     margin-bottom: 20px
 }
 
+.form.paraphrasing-tool .steps {
+    padding: 30px;
+}
+
 @media screen and (max-width: 1199px) {
     .form .steps {
         margin: 0 auto;
         padding: 30px 40px 0;
         -ms-flex-wrap: wrap;
         flex-wrap: wrap
+    }
+    .form.paraphrasing-tool .steps {
+        padding: 30px 20px 0;
     }
 }
 
@@ -452,6 +459,10 @@ button {
     align-items: center;
     font-size: 17px;
     line-height: 18px
+}
+
+.form.paraphrasing-tool .steps .item {
+    margin-right: 20px;
 }
 
 @media screen and (max-width: 1199px) {
@@ -544,6 +555,10 @@ button {
     box-sizing: border-box;
     padding: 5px 15px;
     position: relative
+}
+
+.form.paraphrasing-tool .form-group.radio-buttons {
+    width: auto;
 }
 
 @media screen and (max-width: 1199px) {
@@ -646,6 +661,10 @@ button {
     max-width: 135px;
     font-size: 16px;
     line-height: 20px
+}
+
+.form.paraphrasing-tool .form-group .text {
+    line-height: 38px;
 }
 
 @media screen and (max-width: 767px) {

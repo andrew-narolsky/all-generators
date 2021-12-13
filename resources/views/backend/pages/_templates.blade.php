@@ -12,6 +12,8 @@
             @include('backend.pages.blocks._ratting')
         @elseif($block->id == 6)
             @include('backend.pages.blocks._conclusion_generator')
+        @elseif($block->id == 7)
+            @include('backend.pages.blocks._paraphrasing_tool')
         @endif
     @endforeach
 @endif
