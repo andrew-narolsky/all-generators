@@ -108,6 +108,8 @@ ConclusionGenerator.prototype.showResults = function()
     var sumWords = this.values.text.split(' ').length;
     var percent = (((origWords - sumWords) / origWords) * 100).toFixed(2).split('.');
 
+    this.fields.title.val('Want to have fun instead of a college paper?').attr('disabled', true);
+
     this.container.find('.original-words').text(origWords + ' words');
     this.container.find('.summary-words').text(sumWords + ' words');
     this.container.find('.percent').text(percent[0] + '.' + percent[1] + '%');

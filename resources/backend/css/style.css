@@ -1,3 +1,79 @@
+@font-face {
+    font-family: 'Noe Display';
+    src: url(/backend/fonts/NoeDisplay-Medium.eot);
+    src: url(/backend/fonts/NoeDisplay-Medium.eot?#iefix) format('embedded-opentype'),
+    url(/backend/fonts/NoeDisplay-Medium.woff2) format('woff2'),
+    url(/backend/fonts/NoeDisplay-Medium.woff) format('woff'),
+    url(/backend/fonts/NoeDisplay-Medium.ttf) format('truetype'),
+    url(/backend/fonts/NoeDisplay-Medium.svg#NoeDisplay-Medium) format('svg');
+    font-weight: 500;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Noe Display';
+    src: url(/backend/fonts/NoeDisplay-Bold.eot);
+    src: url(/backend/fonts/NoeDisplay-Bold.eot?#iefix) format('embedded-opentype'),
+    url(/backend/fonts/NoeDisplay-Bold.woff2) format('woff2'),
+    url(/backend/fonts/NoeDisplay-Bold.woff) format('woff'),
+    url(/backend/fonts/NoeDisplay-Bold.ttf) format('truetype'),
+    url(/backend/fonts/NoeDisplay-Bold.svg#NoeDisplay-Bold) format('svg');
+    font-weight: bold;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-display: swap;
+    font-family: 'Gilroy';
+    font-weight: 400;
+    src: url(/backend/fonts/Gilroy-Regular.woff2) format("woff2"),
+    url(/backend/fonts/Gilroy-Regular.woff) format("woff")
+}
+
+@font-face {
+    font-display: swap;
+    font-family: 'Gilroy';
+    font-weight: 300;
+    src: url(/backend/fonts/Gilroy-Light.woff2) format("woff2"),
+    url(/backend/fonts/Gilroy-Light.woff) format("woff")
+}
+
+@font-face {
+    font-display: swap;
+    font-family: 'Gilroy';
+    font-weight: 500;
+    src: url(/backend/fonts/Gilroy-Medium.woff2) format("woff2"),
+    url(/backend/fonts/Gilroy-Medium.woff) format("woff")
+}
+
+@font-face {
+    font-display: swap;
+    font-family: 'Gilroy';
+    font-style: italic;
+    font-weight: 500;
+    src: url(/backend/fonts/Gilroy-MediumItalic.eot);
+    src: url(/backend/fonts/Gilroy-MediumItalic.eot#iefix) format("embedded-opentype"),
+    url(/backend/fonts/Gilroy-MediumItalic.woff2) format("woff2"),
+    url(/backend/fonts/Gilroy-MediumItalic.woff) format("woff"),
+    url(/backend/fonts/Gilroy-MediumItalic.ttf) format("truetype"),
+    url(/backend/fonts/Gilroy-MediumItalic.svg#Gilroy-MediumItalic) format("svg")
+}
+
+@font-face {
+    font-display: swap;
+    font-family: 'Gilroy';
+    font-style: normal;
+    font-weight: 600;
+    src: url(/backend/fonts/Gilroy-SemiBold.eot);
+    src: url(/backend/fonts/Gilroy-SemiBold.eot#iefix) format("embedded-opentype"),
+    url(/backend/fonts/Gilroy-SemiBold.woff2) format("woff2"),
+    url(/backend/fonts/Gilroy-SemiBold.woff) format("woff"),
+    url(/backend/fonts/Gilroy-SemiBold.ttf) format("truetype"),
+    url(/backend/fonts/Gilroy-SemiBold.svg#Gilroy-SemiBold) format("svg")
+}
+
 html {
     line-height: 1.15;
     -webkit-text-size-adjust: 100%;
@@ -9,8 +85,9 @@ body {
     font-family: 'Gilroy', 'Arial', sans-serif;
     overflow-wrap: break-word;
     word-wrap: break-word;
-    color: #000615;
+    color: #2c2c2c;
     font-size: 15px;
+    font-weight: 400;
 }
 
 details, main {
@@ -219,7 +296,7 @@ button {
 }
 
 .result-generator .form .form-group.radio-buttons .text a {
-    color: #127bbe
+    color: #40AC60;
 }
 
 .result {
@@ -577,6 +654,9 @@ button {
         max-width: inherit;
         margin-bottom: 25px;
         text-align: center
+    }
+    .form .form-group.radio-buttons:before {
+        left: 12px;
     }
 }
 
@@ -1108,7 +1188,8 @@ button {
     font-size: 38px;
     line-height: 46px;
     margin-top: 0;
-    margin-bottom: 30px
+    margin-bottom: 30px;
+    font-weight: 500;
 }
 
 @media screen and (max-width: 767px) {
@@ -1192,4 +1273,58 @@ button {
 
 .swal-footer {
     text-align: center;
+}
+
+.mt-0 {
+    margin-top: 0;
+}
+
+.mb-0 {
+    margin-bottom: 0;
+}
+
+.swal-modal .swal-button {
+    border-radius: 2px;
+    font-size: 15px;
+    height: 44px;
+    line-height: 44px;
+    width: 150px;
+    background: #40ac60;
+    box-sizing: border-box;
+    color: #fff;
+    display: block;
+    font-weight: 600;
+    text-align: center;
+    transition: all .3s ease;
+    padding: 0;
+}
+
+.swal-modal {
+    border-radius: 2px;
+}
+
+.swal-button:focus {
+    box-shadow: none;
+}
+
+.swal-footer {
+    margin-top: 0 !important;
+}
+
+.swal-modal .swal-button:hover {
+    background: #5cc97d;
+    text-decoration: underline;
+}
+
+.swal-title:first-child {
+    color: #000615;
+    font-family: "Neo Display, Arial, sans-serif";
+    font-size: 30px;
+    font-weight: 500;
+    margin-bottom: 0 !important;
+}
+
+.form .form-group > input:disabled {
+    background: #fdfaf6;
+    font-size: 22px;
 }

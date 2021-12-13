@@ -22,8 +22,7 @@ for (let star in stars) {
                 $.post('/add-vote', data, function(response) {
                     $('.votes span').text(response);
                     swal({
-                        title: 'Success!',
-                        text: 'You are voted',
+                        title: 'Thank you for your vote!',
                         type: 'success',
                         buttons : {
                             confirm: {

@@ -1,0 +1,52 @@
+@font-face {
+    font-family: 'Noe Display';
+    src: url('NoeDisplay-Medium.eot');
+    src: url('NoeDisplay-Medium.eot?#iefix') format('embedded-opentype'),
+        url('NoeDisplay-Medium.woff2') format('woff2'),
+        url('NoeDisplay-Medium.woff') format('woff'),
+        url('NoeDisplay-Medium.ttf') format('truetype'),
+        url('NoeDisplay-Medium.svg#NoeDisplay-Medium') format('svg');
+    font-weight: 500;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Noe Display';
+    src: url('NoeDisplay-Bold.eot');
+    src: url('NoeDisplay-Bold.eot?#iefix') format('embedded-opentype'),
+        url('NoeDisplay-Bold.woff2') format('woff2'),
+        url('NoeDisplay-Bold.woff') format('woff'),
+        url('NoeDisplay-Bold.ttf') format('truetype'),
+        url('NoeDisplay-Bold.svg#NoeDisplay-Bold') format('svg');
+    font-weight: bold;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Noe Display';
+    src: url('NoeDisplay.eot');
+    src: url('NoeDisplay.eot?#iefix') format('embedded-opentype'),
+        url('NoeDisplay.woff2') format('woff2'),
+        url('NoeDisplay.woff') format('woff'),
+        url('NoeDisplay.ttf') format('truetype'),
+        url('NoeDisplay.svg#NoeDisplay') format('svg');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Noe Display';
+    src: url('NoeDisplay-Black.eot');
+    src: url('NoeDisplay-Black.eot?#iefix') format('embedded-opentype'),
+        url('NoeDisplay-Black.woff2') format('woff2'),
+        url('NoeDisplay-Black.woff') format('woff'),
+        url('NoeDisplay-Black.ttf') format('truetype'),
+        url('NoeDisplay-Black.svg#NoeDisplay-Black') format('svg');
+    font-weight: 900;
+    font-style: normal;
+    font-display: swap;
+}
+

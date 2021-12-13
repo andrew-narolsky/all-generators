@@ -5,11 +5,6 @@
     <meta name="viewport" content="initial-scale=1.0, width=device-width">
     <title>@yield('title')</title>
     <meta name="description" content="@yield('description')">
-    <link rel="preload" href="{{ asset('/backend/fonts/Gilroy-Light.woff') }}" as="font" crossorigin="anonymous">
-    <link rel="preload" href="{{ asset('/backend/fonts/Gilroy-Medium.woff') }}" as="font" crossorigin="anonymous">
-    <link rel="preload" href="{{ asset('/backend/fonts/Gilroy-Regular.woff') }}" as="font" crossorigin="anonymous">
-    <link rel="preload" href="{{ asset('/backend/fonts/Gilroy-SemiBold.woff') }}" as="font" crossorigin="anonymous">
-    <link rel="preload" href="{{ asset('/backend/fonts/NoeDisplay-Medium.woff') }}" as="font" crossorigin="anonymous">
     <link rel="stylesheet" href="{{ asset('/backend/css/style.min.css') }}" type="text/css"/>
 </head>
 <body>

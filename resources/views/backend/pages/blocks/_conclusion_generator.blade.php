@@ -4,12 +4,12 @@
 @if($block_content)
     <div class="form">
         <div class="wrap">
-            <div class="h1">{!! $block_content['title'] !!}</div>
+            <div class="h1">{!! $block_content['title'] ?? null !!}</div>
             <div class="steps">
-                <div class="item"><span>1.</span> {{ $block_content['step_1'] }}</div>
-                <div class="item"><span>2.</span> {{ $block_content['step_2'] }}</div>
-                <div class="item"><span>3.</span> {{ $block_content['step_3'] }}</div>
-                <div class="item"><span>4.</span> {{ $block_content['step_4'] }}</div>
+                <div class="item"><span>1.</span> {{ $block_content['step_1'] ?? null }}</div>
+                <div class="item"><span>2.</span> {{ $block_content['step_2'] ?? null }}</div>
+                <div class="item"><span>3.</span> {{ $block_content['step_3'] ?? null }}</div>
+                <div class="item"><span>4.</span> {{ $block_content['step_4'] ?? null }}</div>
             </div>
             <form class="conclusion_generator">
                 @csrf
@@ -22,13 +22,13 @@
                     </div>
                 </div>
                 <div class="form-group">
-                    <input type="text" name="title" class="form-control" placeholder="{{ __('Type/paste your title here') }}">
+                    <input type="text" name="title" class="form-control" placeholder="{{ $block_content['input_placeholder'] ?? null }}">
                 </div>
                 <div class="form-group">
-                    <textarea class="form-control" name="text" rows="3" placeholder="{{ __('Type/ paste your text here (minimum 200 words required)') }}"></textarea>
+                    <textarea class="form-control" name="text" rows="3" placeholder="{{ $block_content['textarea_placeholder'] ?? null }}"></textarea>
                 </div>
                 <div class="form-group radio-buttons">
-                    <div class="text">{{ __('How long should your summary be?') }}</div>
+                    <div class="text">{{ $block_content['tooltip'] ?? null }}</div>
                     <label class="radio-inline" for="inlineRadio1">
                         <input name="count" checked type="radio" id="inlineRadio1" value="150">
                         <span></span>150 {{ __('words') }}

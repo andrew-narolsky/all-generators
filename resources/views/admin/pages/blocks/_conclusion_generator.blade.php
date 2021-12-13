@@ -21,6 +21,18 @@
                 <input type="text" class="form-control input-style mb-2" name="blocks[{{ $block->pivot->id }}][step_3]" value="{{ $block_content['step_3'] ?? null }}" placeholder="Step 3">
                 <input type="text" class="form-control input-style mb-2" name="blocks[{{ $block->pivot->id }}][step_4]" value="{{ $block_content['step_4'] ?? null }}" placeholder="Step 4">
             </div>
+            <div class="form-group">
+                <label class="input__label">{{ __('Input placeholder') }}</label>
+                <input type="text" class="form-control input-style mb-2" name="blocks[{{ $block->pivot->id }}][input_placeholder]" value="{{ $block_content['input_placeholder'] ?? null }}" placeholder="Input placeholder">
+            </div>
+            <div class="form-group">
+                <label class="input__label">{{ __('Textarea placeholder') }}</label>
+                <input type="text" class="form-control input-style mb-2" name="blocks[{{ $block->pivot->id }}][textarea_placeholder]" value="{{ $block_content['textarea_placeholder'] ?? null }}" placeholder="Textarea placeholder">
+            </div>
+            <div class="form-group">
+                <label class="input__label">{{ __('Tooltip') }}</label>
+                <input type="text" class="form-control input-style mb-2" name="blocks[{{ $block->pivot->id }}][tooltip]" value="{{ $block_content['tooltip'] ?? null }}" placeholder="Tooltip">
+            </div>
         </div>
     </div>
 </div>
