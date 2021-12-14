@@ -4,9 +4,9 @@
 @if($block_content)
     <div class="text-block">
         <div class="wrap">
-            <div class="h1">{{ $block_content['title'] }}</div>
+            <div class="h1">{{ $block_content['title'] ?? null }}</div>
             <div class="content">
-                {!! $block_content['content'] !!}
+                {!! $block_content['content'] ?? null !!}
             </div>
         </div>
     </div>

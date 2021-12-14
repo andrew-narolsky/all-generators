@@ -1,6 +1,59 @@
 (function (jQuery) {
     'use strict';
 
+    $('#add_faq_block').on('click', function (e) {
+        e.preventDefault();
+        for(let i = 1; i <= $('.faq-row').length; i++) {
+            if (i == $('.faq-row').length) {
+                let index = i + 1;
+                let html = `<div class="faq-row faq-row-${index}">
+                    <div class="form-group">
+                        <label class="input__label" style="display: flex; justify-content: space-between; align-items: center">Question
+                            <button class="btn btn-danger btn-sm delete-row" data-id="${index}">
+                                <i class="fas fas fa-trash-alt"></i>
+                            </button>
+                        </label>
+                        <input type="text" class="form-control input-style" name="blocks[6][faq][${index}][question]" value="">
+                    </div>
+                    <div class="form-group">
+                        <label class="input__label">Answer</label>
+                        <textarea class="form-control ckeditor" id="ckeditor_6_${index}" name="blocks[6][faq][${index}][answer]" rows="3"></textarea>
+                    </div>
+                </div>`;
+                $('.faq-row-' + i).after(html);
+                CKEDITOR.replace('ckeditor_6_' + index);
+                return false;
+            }
+        }
+    });
+
+    $('.faqs').on('click', '.delete-row', function (e) {
+        e.preventDefault();
+        let id = parseInt($(this).data('id'));
+        if (!id || id == 1) {
+            return false;
+        }
+        swal({
+            title: 'Are you sure?',
+            text: "Do You won't remove this row!",
+            type: 'warning',
+            buttons:{
+                confirm: {
+                    text : 'Yes, delete it!',
+                    className : 'btn btn-success'
+                },
+                cancel: {
+                    visible: true,
+                    className: 'btn btn-danger'
+                }
+            }
+        }).then((Delete) => {
+            if (Delete) {
+                $('.faq-row-' + id).remove();
+            }
+        });
+    })
+
     $(document).ready(function(){
         if ($('.ckeditor').length) {
             // Editor

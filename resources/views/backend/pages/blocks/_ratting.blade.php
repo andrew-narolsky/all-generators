@@ -4,7 +4,7 @@
 @if($block_content)
     <div class="ratting" data-page="{{ $page->id }}">
         <div class="wrap">
-            <div class="title">{{ $block_content['title'] }}</div>
+            <div class="title">{{ $block_content['title'] ?? null }}</div>
             <div class="stars">
                 @for($i = 1; $i <= 5; $i++)
                 <label for="rate_{{ $i }}" @if($i <= $page->stars) class="active" @endif>

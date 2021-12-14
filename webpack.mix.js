@@ -16,6 +16,7 @@ mix.styles([
     'resources/backend/css/style.css',
     'resources/backend/css/header.css',
     'resources/backend/css/footer.css',
+    'resources/backend/css/faq.css',
 ], 'public/backend/css/style.min.css');
 
 mix.scripts([
@@ -26,9 +27,9 @@ mix.scripts([
     'resources/backend/js/conclusion-generator.js',
 ], 'public/backend/js/script.min.js');
 
-// mix.copyDirectory('resources/backend/img', 'public/backend/img');
-// mix.copyDirectory('resources/backend/favicon', 'public/backend/favicon');
-// mix.copyDirectory('resources/backend/fonts', 'public/backend/fonts');
+mix.copyDirectory('resources/backend/img', 'public/backend/img');
+mix.copyDirectory('resources/backend/favicon', 'public/backend/favicon');
+mix.copyDirectory('resources/backend/fonts', 'public/backend/fonts');
 
 // admin
-// mix.copyDirectory('resources/admin', 'public/admin');
+mix.copyDirectory('resources/admin', 'public/admin');

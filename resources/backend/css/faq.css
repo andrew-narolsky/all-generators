@@ -1,0 +1,240 @@
+.faq {
+    padding: 77px 0 80px;
+    background: #fafafa;
+}
+
+.faq__title {
+    font-size: 44px;
+    line-height: 56px;
+    margin-bottom: 4px;
+    font-weight: 500;
+    text-align: center;
+    margin-top: 0;
+    color: #000615;
+    font-family: 'Noe Display', 'Arial', sans-serif;
+}
+
+.faq__subtitle {
+    color: #000615;
+    font-size: 13px;
+    font-weight: 600;
+    line-height: 20px;
+    text-transform: uppercase;
+    margin-bottom: 48px;
+    text-align: center;
+}
+
+.faq__subtitle-item {
+    background: #fdfbe0;
+    display: inline-block;
+    padding: 10px 17px;
+    margin-top: 0;
+}
+
+.bg-pink {
+    color: #2c2c2c;
+    font-size: 13px;
+    font-weight: 600;
+    line-height: 16px;
+    padding: 6px 26px 4px 15px;
+    text-transform: uppercase;
+    z-index: 1;
+    font-family: Gilroy, Arial, sans-serif;
+    position: relative;
+}
+
+.faq__content {
+    border: 1px solid #000615;
+    border-left: none;
+    border-right: none;
+    margin: auto;
+    max-width: 890px;
+    width: 100%;
+}
+
+.faq__item {
+    border-top: 1px solid #000615;
+}
+
+.faq__item:first-child {
+    border-top: none;
+}
+
+.faq__name {
+    cursor: pointer;
+    padding: 23px 60px 24px 19px;
+    position: relative;
+}
+
+.faq__name-title {
+    color: #000615;
+    font-size: 19px;
+    font-weight: 500;
+    line-height: 22px;
+    margin-right: 7%;
+    font-family: 'Noe Display', 'Arial', sans-serif;
+}
+
+.faq__name-icon {
+    border: 1px solid #000615;
+    border-radius: 50%;
+    height: 23px;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 23px;
+    right: 20px;
+}
+
+.faq__name-icon:before {
+    background: #000615;
+    content: "";
+    height: 1px;
+    position: absolute;
+    width: 11px;
+    left: 5px;
+    top: 10px;
+}
+
+.faq__name-icon:after {
+    background: #000615;
+    content: "";
+    height: 1px;
+    position: absolute;
+    width: 11px;
+    left: 5px;
+    top: 10px;
+    transform: rotate(90deg);
+}
+
+.faq__item--active .faq__name-icon {
+    border-color: #40ac60;
+}
+
+.faq__item--active .faq__name-icon:before {
+    background: #40ac60;
+}
+
+.faq__item--active .faq__name-icon:after {
+    display: none;
+}
+
+.faq__value {
+    color: #2c2c2c;
+    font-size: 16px;
+    line-height: 28px;
+    margin-left: 0;
+    padding-top: 6px;
+    position: relative;
+}
+
+.faq__inner {
+    margin-left: 50px;
+    padding-left: 19px;
+    position: relative;
+}
+
+.text_holder_block {
+    color: #2c2c2c;
+    font-size: 16px;
+    margin-bottom: 22px;
+}
+
+.faq__inner:before {
+    background: #40ac60;
+    bottom: 0;
+    content: "";
+    height: 100%;
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: 1px;
+}
+
+.text_holder_block p, .text_holder_block span {
+    color: #000615;
+    font-size: 16px;
+    line-height: 28px;
+    margin: 0 0 14px;
+}
+
+.faq__inner p {
+    margin: 0 0 26px;
+}
+
+.text_holder_block ul {
+    list-style: none;
+    margin: 0 0 28px 5px;
+    padding: 0;
+}
+
+.text_holder_block li {
+    list-style-type: none;
+    margin: 0 0 7px;
+}
+
+.text_holder_block ul li {
+    margin-bottom: 7px;
+    padding-left: 30px;
+    position: relative;
+}
+
+.text_holder_block ul li:before {
+    background: url(../img/marker.svg) 50% 50% no-repeat;
+    content: "";
+    height: 20px;
+    left: 0;
+    position: absolute;
+    width: 20px;
+}
+
+@media (max-width: 1023px) {
+    .faq {
+        padding: 71px 45px 38px;
+    }
+    .faq__title {
+        font-size: 38px;
+        font-weight: 500;
+        line-height: 46px;
+        margin-bottom: 16px;
+    }
+    .faq__subtitle {
+        margin-bottom: 33px;
+    }
+}
+
+@media (max-width: 767px) {
+    .faq {
+        padding: 32px 15px 21px;
+    }
+    .faq__title {
+        font-size: 28px;
+        font-weight: 400;
+        line-height: 38px;
+        margin-bottom: 16px;
+        text-align: left;
+    }
+    .faq__subtitle {
+        font-size: 13px;
+        font-weight: 600;
+        line-height: 20px;
+        margin-bottom: 27px;
+    }
+    .faq__subtitle-item {
+        padding: 10px 17px;
+        text-align: left;
+        margin: 0;
+    }
+    .faq__name {
+        padding: 23px 60px 23px 0;
+    }
+    .faq__value {
+        font-size: 16px;
+        line-height: 28px;
+        margin-left: 0;
+        padding-top: 6px;
+    }
+    .faq__inner {
+        margin-left: 0;
+    }
+}

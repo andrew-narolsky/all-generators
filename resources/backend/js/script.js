@@ -57,4 +57,17 @@ for (let star in stars) {
         $('.promo').hide();
         e.preventDefault();
     });
+
+    // faq handler
+    $('.faq__item', '.faq').on('click', function (e) {
+        $(this).toggleClass('faq__item--active');
+        $(this).find('.faq__value').slideToggle();
+        e.preventDefault();
+    });
+
+    // faqs handler
+    $('.faqs__item', '.faqs').on('click', function () {
+        $(this).toggleClass('faqs__item--active');
+        $(this).find('.faqs__value').slideToggle();
+    });
 })();

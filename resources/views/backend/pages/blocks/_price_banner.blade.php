@@ -5,9 +5,9 @@
     <div class="ideal-match mt-0">
         <div class="wrap">
             <div class="prices">
-                <div class="subtitle">{{ $block_content['excerpt'] }}</div>
-                <div class="title">{!! $block_content['content'] !!}</div>
-                <a href="{{ $block_content['button_link'] }}" class="button green">{{ $block_content['button_text'] }}</a>
+                <div class="subtitle">{{ $block_content['excerpt'] ?? null }}</div>
+                <div class="title">{!! $block_content['content'] ?? null !!}</div>
+                <a href="{{ $block_content['button_link'] ?? null }}" class="button green">{{ $block_content['button_text'] ?? null }}</a>
             </div>
         </div>
     </div>

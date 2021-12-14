@@ -4,9 +4,9 @@
 @if($block_content)
     <div class="banner">
         <div class="wrap">
-            <div class="h2">{{ $block_content['title'] }}</div>
-            <p>{!! $block_content['content'] !!}</p>
-            <a href="{{ $block_content['button_link'] }}" class="button green">{{ $block_content['button_text'] }}</a>
+            <div class="h2">{{ $block_content['title'] ?? null }}</div>
+            <p>{!! $block_content['content'] ?? null !!}</p>
+            <a href="{{ $block_content['button_link'] ?? null }}" class="button green">{{ $block_content['button_text'] ?? null }}</a>
         </div>
     </div>
 @endif
