@@ -19,9 +19,9 @@ class BlockContentSeeder extends Seeder
             [
                 'text' => serialize([
                     'title' => 'Complete Your Paper in Just <span>4 Easy Steps</span> Using Our <span>Conclusion Generator</span>',
-                    'step_1' => 'Copy and paste your title and text in the relative fields',
+                    'step_1' => 'Copy and paste your title and text in the correspondent fields',
                     'step_2' => 'Choose the word count for the summary',
-                    'step_3' => 'Click the "Generate My Conclusion',
+                    'step_3' => 'Click the "Generate My Conclusion" button',
                     'step_4' => 'Enjoy the result!',
                     'input_placeholder' => 'Type/paste your title here',
                     'textarea_placeholder' => 'Type/paste your text here (minimum 200 words required)',
@@ -77,6 +77,27 @@ class BlockContentSeeder extends Seeder
                 ]),
                 'block_id' => 2,
                 'block_template_id' => 5,
+                'created_at' => date('Y-m-d H:i:s'),
+                'updated_at' => date('Y-m-d H:i:s'),
+            ],
+            // FAQ
+            [
+                'text' => serialize([
+                    'title' => 'Frequently Asked Questions',
+                    'subtitle' => 'EVALUATE GRABMYESSAY.COM SAMPLES OF VARIOUS TYPES OF PAPERS',
+                    'faq' => [
+                        1 => [
+                            'question' => 'How do I place an order with essay writing service?',
+                            'answer' => '<p>Once you access our website, you will find an order form. If you’re a first-time customer, you may contact our Customer Support Department regarding any questions about write my essay online options or services. Our services are available 24/7 via live chat, telephone, or email. Here is how ordering process works:</p><ul><li>Complete the order form, filling in each field as much detail as possible. Indicate your name and contact information so that we could get in touch with you or deliver completed paper.</li><li>Submitted order is analyzed and is then assigned to writer who has academic credentials and writing background.</li><li>Once the writer is found, we notify you and request payment. No work will begin until payment is made.</li><li>You’ll have a personal, secure account on our site. Access it at any time, check on progress of make my essay orders. This account page may also be used by your writer to communicate with you directly. Check account often, as writer may have questions or need clarification regarding assignments.</li><li>Once the writer has finished your order, it is sent to our editing department where it is reviewed for plagiarism, quality and adherence with instructions.</li><li>When your order is ready, you will be notified on your account page and via email. Access documents by downloading it from your account.</li><li>You have a minimum of 48 hours to review the finished product and either accept it or request revisions. (For lengthy, complex works, review time is longer).</li></ul>',
+                        ],
+                        2 => [
+                            'question' => 'What if I am not satisfied with the final draft I receive?',
+                            'answer' => '<p>We have a clear and liberal Revision Policy in place. If you require revisions of&nbsp;write me an essay&nbsp;product, please let us know immediately, by contacting Customer Support. If changes that are requested do not deviate from original instructions, they will be carried out immediately and free of charge. Be very specific about amendments, so that the writer is able to fulfill your expectations about our service.</p><p>If your revision requests are a change from your initial specifications, we’ll be happy to complete them; however, there will be an additional charge for new instructions. We want you to be satisfied with services. For additional information regarding revision requests for write my essays services, please see our Revision Policy page.</p>'
+                        ]
+                    ]
+                ]),
+                'block_id' => 8,
+                'block_template_id' => 6,
                 'created_at' => date('Y-m-d H:i:s'),
                 'updated_at' => date('Y-m-d H:i:s'),
             ],
