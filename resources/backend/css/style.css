@@ -1346,3 +1346,23 @@ button {
     background: #fdfaf6;
     font-size: 22px;
 }
+
+.text-block ul {
+    padding: 0;
+    margin-bottom: 30px;
+}
+
+.text-block ul li {
+    position: relative;
+    padding-left: 30px;
+}
+
+.text-block ul li:before {
+    background: url(../img/checker.svg);
+    content: "";
+    height: 20px;
+    left: 0;
+    position: absolute;
+    top: 4px;
+    width: 20px;
+}
