@@ -18,7 +18,7 @@ class BlockContentSeeder extends Seeder
             // Conclusion generator
             [
                 'text' => serialize([
-                    'title' => '<span>Conclusion Generator</span>:Create Your Perfect Paper Summary  In<span>4 Easy Steps</span>',
+                    'title' => '<span>Conclusion Generator:</span> Create Your Perfect Paper Summary In<span> 4 Easy Steps</span>',
                     'step_1' => 'Copy and paste your title and text in correspondent fields',
                     'step_2' => 'Choose the word count for the summary',
                     'step_3' => 'Click the "Generate My Conclusion" button',
