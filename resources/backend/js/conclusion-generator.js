@@ -100,7 +100,7 @@ ConclusionGenerator.prototype.showResults = function()
 {
     $('textarea[name=text]').val(this.values.text);
     $('body').addClass('result-generator');
-    $('.radio-buttons .text').html('Need better results? <a href="#">Get expert editing help!</a>');
+    $('.radio-buttons .text').html('Need better results? <a href="' + $('.prices .button').attr('href') + '">Get expert editing help!</a>');
     this.submit.text('Resubmit');
     this.submit.attr('onclick', 'window.location.reload()');
 
