@@ -14,6 +14,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
-});
+// Conclusion generator
+Route::post('/summarize-text',
+    [App\Http\Controllers\ConclusionGenerator\ConclusionGeneratorController::class,
+        'summarizeText'])->middleware('api-token');

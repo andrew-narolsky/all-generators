@@ -29,6 +29,9 @@ Auth::routes([
 
 // Conclusion generator
 Route::post('/summarize-text', [App\Http\Controllers\ConclusionGenerator\ConclusionGeneratorController::class, 'summarizeText']);
+// Paraphrasing tool
+Route::post('/get-paraphrasing-text', [App\Http\Controllers\ParaphrasingTool\ParaphrasingToolController::class, 'getParaphrasingText']);
+// Add votes
 Route::post('/add-vote', [App\Http\Controllers\Admin\PageController::class, 'addVote']);
 
 // Admin

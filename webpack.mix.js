@@ -17,6 +17,7 @@ mix.styles([
     'resources/backend/css/header.css',
     'resources/backend/css/footer.css',
     'resources/backend/css/faq.css',
+    'resources/backend/css/paraphrasing-tool.css',
 ], 'public/backend/css/style.min.css');
 
 mix.scripts([
@@ -25,11 +26,12 @@ mix.scripts([
     'resources/backend/js/validator.js',
     'resources/admin/js/plugin/sweetalert/sweetalert.min.js',
     'resources/backend/js/conclusion-generator.js',
+    'resources/backend/js/paraphrasing-tool.js',
 ], 'public/backend/js/script.min.js');
 
-mix.copyDirectory('resources/backend/img', 'public/backend/img');
-mix.copyDirectory('resources/backend/favicon', 'public/backend/favicon');
-mix.copyDirectory('resources/backend/fonts', 'public/backend/fonts');
-
-// admin
-mix.copyDirectory('resources/admin', 'public/admin');
+// mix.copyDirectory('resources/backend/img', 'public/backend/img');
+// mix.copyDirectory('resources/backend/favicon', 'public/backend/favicon');
+// mix.copyDirectory('resources/backend/fonts', 'public/backend/fonts');
+//
+// // admin
+// mix.copyDirectory('resources/admin', 'public/admin');
