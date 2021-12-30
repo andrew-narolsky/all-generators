@@ -12,16 +12,17 @@ class ConclusionGeneratorController extends Controller
 {
     const MINIMUM_SENTENCES_LIMIT = 5;
     const MINIMUM_WORDS_LIMIT = 200;
+    const CONCLUSION_GENERATOR_PAGE_ID = 1;
 
     public function getPageStars()
     {
-        $page = Page::select('count_votes', 'stars')->find(1);
+        $page = Page::select('count_votes', 'stars')->find(self::CONCLUSION_GENERATOR_PAGE_ID);
         return $page;
     }
 
     public function setPageStars()
     {
-        $page = Page::find(1);
+        $page = Page::find(self::CONCLUSION_GENERATOR_PAGE_ID);
         $page->update(['count_votes' => ($page->count_votes + 1)]);
         return $page->count_votes;
     }
