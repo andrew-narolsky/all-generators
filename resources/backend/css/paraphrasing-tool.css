@@ -1,0 +1,80 @@
+.result-text {
+    background: #fffdfb;
+    border: 1px solid #292929;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    border-radius: 2px;
+    height: 205px;
+    padding: 15px;
+    outline: 0;
+    font-size: 15px;
+    resize: none;
+    line-height: 1.5;
+}
+
+.result-text b {
+    background: #D1F0E5;
+    padding: 0 5px;
+    font-weight: normal;
+    position: relative;
+}
+
+.result-text b .qtiperar-tooltip.opened {
+    display: flex;
+}
+
+.result-text b .qtiperar-tooltip {
+    display: none;
+    flex-wrap: wrap;
+    position: absolute;
+    top: 150%;
+    left: 0;
+    width: 230px;
+    background: #FFFDFB;
+    border: 1px solid #292929;
+    box-sizing: border-box;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08), 0 2px 2px rgba(0, 0, 0, 0.06);
+    padding: 10px;
+    z-index: 2;
+}
+
+.result-text b .qtiperar-tooltip:before {
+    content: '';
+    width: 12px;
+    height: 12px;
+    background: #FFFDFB;
+    border-right: 1px solid #292929;
+    border-top: 1px solid #292929;
+    position: absolute;
+    left: 25px;
+    top: -7px;
+    transform: rotate(-45deg);
+}
+
+.result-text b .qtiperar-tooltip span {
+    width: 100%;
+    display: block;
+    line-height: 38px;
+    padding: 0 10px;
+    box-sizing: border-box;
+}
+
+.result-text b .qtiperar-tooltip span:hover {
+    background: #E7F5F0;
+}
+
+.result-text b .qtiperar-tooltip .close,
+.result-text b .qtiperar-tooltip .close:hover {
+    display: block;
+    padding: 0;
+    width: 10px;
+    height: 10px;
+    position: absolute;
+    right: 5px;
+    top: 5px;
+    background-image: url("../img/x.svg");
+    background-position: center center;
+    background-size: contain;
+    background-repeat: no-repeat;
+    z-index: 3;
+}

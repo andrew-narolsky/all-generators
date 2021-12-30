@@ -70,4 +70,24 @@ for (let star in stars) {
         $(this).toggleClass('faqs__item--active');
         $(this).find('.faqs__value').slideToggle();
     });
+
+    // Tooltips
+    $('.qtiperar').on('click', function () {
+        $('.qtiperar-tooltip').remove();
+        let str = $(this).data('title');
+        let arr = str.split('|');
+        let html = '';
+        for (let i = 0; i < arr.length; i++) {
+            html += '<span>' + arr[i] + '</span>';
+        }
+        let content = '<span class="qtiperar-tooltip">' + html + '<span class="close"></span></span>';
+        $('.qtiperar').append(content);
+        $(this).find('.qtiperar-tooltip').addClass('opened');
+    });
+
+    // Close tooltip
+    $('.qtiperar').on('click', '.close', function (e) {
+        e.stopPropagation();
+        $(this).closest('.qtiperar').find('.qtiperar-tooltip').remove();
+    });
 })();
