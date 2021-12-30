@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\ConclusionGenerator;
 
 use App\Models\ConclusionGenerator;
+use App\Models\Page;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
@@ -11,6 +12,19 @@ class ConclusionGeneratorController extends Controller
 {
     const MINIMUM_SENTENCES_LIMIT = 5;
     const MINIMUM_WORDS_LIMIT = 200;
+
+    public function getPageStars()
+    {
+        $page = Page::select('count_votes', 'stars')->find(1);
+        return $page;
+    }
+
+    public function setPageStars()
+    {
+        $page = Page::find(1);
+        $page->update(['count_votes' => ($page->count_votes + 1)]);
+        return $page->count_votes;
+    }
 
     public function summarizeText(Request $request)
     {

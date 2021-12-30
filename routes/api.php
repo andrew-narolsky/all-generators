@@ -18,3 +18,9 @@ use Illuminate\Support\Facades\Route;
 Route::post('/summarize-text',
     [App\Http\Controllers\ConclusionGenerator\ConclusionGeneratorController::class,
         'summarizeText'])->middleware('api-token');
+Route::post('/get-conclusion-generator-stars',
+    [App\Http\Controllers\ConclusionGenerator\ConclusionGeneratorController::class,
+        'getPageStars'])->middleware('api-token');
+Route::post('/set-conclusion-generator-stars',
+    [App\Http\Controllers\ConclusionGenerator\ConclusionGeneratorController::class,
+        'setPageStars'])->middleware('api-token');

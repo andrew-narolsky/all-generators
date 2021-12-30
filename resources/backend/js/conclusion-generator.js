@@ -28,7 +28,8 @@ function ConclusionGenerator()
             }
         },
         {
-            field: this.fields.text, rules: 'required|min:1000|max:15000',
+            field: this.fields.text,
+            rules: 'required|min:1000|max:15000',
             selectors: {
                 insert_position: 'parent_last',
                 span_error: '.error-message',
@@ -79,15 +80,15 @@ ConclusionGenerator.prototype.onSubmitConclusionGenerator = function(event)
     this.values.origWords = this.fields.text.val().split(' ').length;
     $('.loader').css({'display': 'block', 'opacity': .7});
 
-    $.post('/summarize-text', data, function(data) {
+    $.post('/summarize-text', data, function(response) {
         $('.loader').css({'display': 'none', 'opacity': 0});
-        $this.setValues(data);
+        $this.setValues(response);
         $this.submit.prop('disabled', false);
         $this.showResults();
-    }).fail(function(data) {
+    }).fail(function(error) {
         $('.loader').css({'display': 'none', 'opacity': 0});
         $this.submit.prop('disabled', false);
-        validator.addErrorsFromJson(data, true);
+        validator.addErrorsFromJson(error, true);
     });
 };
 
