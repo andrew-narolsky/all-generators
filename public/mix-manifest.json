@@ -1,4 +1,26 @@
 {
     "/backend/css/style.min.css": "/backend/css/style.min.css",
-    "/backend/js/script.min.js": "/backend/js/script.min.js"
+    "/backend/js/script.min.js": "/backend/js/script.min.js",
+    "/backend/img/.DS_Store": "/backend/img/.DS_Store",
+    "/backend/img/Star.svg": "/backend/img/Star.svg",
+    "/backend/img/Star_1.svg": "/backend/img/Star_1.svg",
+    "/backend/img/checker.svg": "/backend/img/checker.svg",
+    "/backend/img/close.svg": "/backend/img/close.svg",
+    "/backend/img/copy.svg": "/backend/img/copy.svg",
+    "/backend/img/delete.svg": "/backend/img/delete.svg",
+    "/backend/img/download.svg": "/backend/img/download.svg",
+    "/backend/img/facebook.svg": "/backend/img/facebook.svg",
+    "/backend/img/google-play-badge.svg": "/backend/img/google-play-badge.svg",
+    "/backend/img/loader.svg": "/backend/img/loader.svg",
+    "/backend/img/marker.svg": "/backend/img/marker.svg",
+    "/backend/img/next.svg": "/backend/img/next.svg",
+    "/backend/img/phone-fill.svg": "/backend/img/phone-fill.svg",
+    "/backend/img/pic.png": "/backend/img/pic.png",
+    "/backend/img/pic1.png": "/backend/img/pic1.png",
+    "/backend/img/plus.png": "/backend/img/plus.png",
+    "/backend/img/prev.svg": "/backend/img/prev.svg",
+    "/backend/img/svg-loader.svg": "/backend/img/svg-loader.svg",
+    "/backend/img/toparrow.svg": "/backend/img/toparrow.svg",
+    "/backend/img/twitter.svg": "/backend/img/twitter.svg",
+    "/backend/img/x.svg": "/backend/img/x.svg"
 }

@@ -4,7 +4,7 @@
     -webkit-box-sizing: border-box;
     box-sizing: border-box;
     border-radius: 2px;
-    height: 205px;
+    height: 300px;
     padding: 15px;
     outline: 0;
     font-size: 15px;
@@ -51,7 +51,7 @@
     transform: rotate(-45deg);
 }
 
-.result-text b .qtiperar-tooltip span {
+.result-text b .qtiperar-tooltip span:not(.scrollbar, .close, .search) {
     width: 100%;
     display: block;
     line-height: 38px;
@@ -59,8 +59,40 @@
     box-sizing: border-box;
 }
 
-.result-text b .qtiperar-tooltip span:hover {
+.result-text b .qtiperar-tooltip span:not(.scrollbar, .close, .search):hover {
     background: #E7F5F0;
+}
+
+.result-text b .qtiperar-tooltip .search {
+    position: relative;
+    width: 100%;
+}
+
+.form .form-group textarea {
+    height: 300px;
+}
+
+.result-text b .qtiperar-tooltip .search input {
+    width: 100%;
+    border: 1px solid #979797;
+    box-sizing: border-box;
+    border-radius: 2px;
+    height: 38px;
+    padding: 0 10px;
+    outline: none;
+}
+
+.result-text b .qtiperar-tooltip .search button {
+    position: absolute;
+    top: 50%;
+    right: 5px;
+    width: 58px;
+    height: 30px;
+    background: #40AC60;
+    box-sizing: border-box;
+    transform: translateY(-50%);
+    color: #ffffff;
+    border: none;
 }
 
 .result-text b .qtiperar-tooltip .close,
@@ -77,4 +109,153 @@
     background-size: contain;
     background-repeat: no-repeat;
     z-index: 3;
+}
+
+.result-paraphrasing .form .form-group textarea {
+    display: none;
+}
+
+.form .form-group .result-text {
+    display: none;
+}
+
+.result-paraphrasing .form .form-group .result-text {
+    display: block;
+}
+
+.result-paraphrasing .form form {
+    position: relative;
+}
+
+.form form .buttons {
+    display: none;
+}
+
+.result-paraphrasing .form form .buttons {
+    display: flex;
+    flex-wrap: wrap;
+    position: absolute;
+    right: 40px;
+    top: 50px;
+    width: 30px;
+    justify-content: space-between;
+    flex-direction: column;
+    height: 300px;
+}
+
+.result-paraphrasing .form form .buttons .bottom {
+    margin-top: auto;
+}
+
+.clear-text {
+    width: 30px;
+    height: 30px;
+    background: #F7F3EB;
+    border-radius: 2px;
+    margin-bottom: 20px;
+    cursor: pointer;
+    position: relative;
+}
+
+.copy-text, .download-text {
+    width: 30px;
+    height: 30px;
+    background: #F7F3EB;
+    border-radius: 2px;
+    margin-top: 5px;
+    cursor: pointer;
+    position: relative;
+}
+
+.copy-text .tooltip {
+    position: absolute;
+    display: flex;
+    opacity: 0;
+    align-items: center;
+    font-size: 13px;
+    text-align: center;
+    top: -55px;
+    left: 0;
+    width: 100px;
+    height: 45px;
+    background: #FDFBE0;
+    box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.2);
+    border-radius: 2px;
+    pointer-events: auto;
+    transition: all .5s;
+}
+
+.copy-text .tooltip.opened {
+    opacity: 1;
+}
+
+.copy-text .tooltip:before {
+    position: absolute;
+    content: '';
+    width: 10px;
+    height: 10px;
+    transform: rotate(45deg);
+    bottom: -5px;
+    left: 10px;
+    background: #FDFBE0;
+}
+
+.clear-text img, .copy-text img, .download-text img {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.action {
+    width: 30px;
+    height: 30px;
+    background: #F7F3EB;
+    border-radius: 2px;
+    margin-bottom: 5px;
+    cursor: pointer;
+    position: relative;
+}
+
+.action img {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.result-text b .qtiperar-tooltip .scrollbar {
+    max-height: 190px;
+    overflow-y: scroll;
+    width: 100%;
+}
+
+.result-text b .qtiperar-tooltip .scrollbar::-webkit-scrollbar {
+    width: 0;
+}
+
+.form .loading .form-group.text-wrap {
+    background: white;
+    opacity: .9;
+    height: 300px;
+    border: 1px solid #292929;
+    border-radius: 2px;
+    position: relative;
+}
+
+.form .form-group.text-wrap .svg-loader {
+    display: none;
+}
+
+.form .loading .form-group.text-wrap .svg-loader {
+    display: block;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.form .loading .form-group.text-wrap textarea {
+    opacity: .1;
+    background: transparent;
 }

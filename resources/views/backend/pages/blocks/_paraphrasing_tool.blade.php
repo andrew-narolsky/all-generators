@@ -15,24 +15,40 @@
             @endif
             <form class="paraphrasing_tool">
                 @csrf
-                <div class="form-group">
+                <div class="form-group text-wrap">
+                    <input type="hidden" id="text">
                     <textarea class="form-control" name="text" rows="3" placeholder="{{ $block_content['textarea_placeholder'] ?? null }}"></textarea>
-                    <div class="result-text">On our website, <b class="qtiperar" style="color:black; cursor:pointer" data-title="students|college students">college students<span class="qtiperar-tooltip"><span>students</span><span>college students</span><span class="close"></span></span></b> and <b class="qtiperar" style="color:black; cursor:pointer" data-title="learners|beginners|newbies|novices|rookies|newcomers|freshmen|inexperienced persons">freshmen</b> can <b class="qtiperar" style="color:black; cursor:pointer" data-title="find|discover|locate">locate</b> <b class="qtiperar" style="color:black; cursor:pointer" data-title="detailed|specific|particular|certain|precise|unique|distinct|exact|special|specified|targeted|designated|distinctive">specific</b> writing guides, <b class="qtiperar" style="color:black; cursor:pointer" data-title="free|loose|unfastened">unfastened</b> essay samples, <b class="qtiperar" style="color:black; cursor:pointer" data-title="fresh|clean|sparkling">clean</b> <b class="qtiperar" style="color:black; cursor:pointer" data-title="topic|subject matter">subject matter</b> ideas, formatting rules, <b class="qtiperar" style="color:black; cursor:pointer" data-title="citation|quotation">quotation</b> tips, and <b class="qtiperar" style="color:black; cursor:pointer" data-title="inspiration|idea|concept|thought|notion|proposal|suggestion">proposal</b> to study.</div>
+                    <div class="result-text"></div>
+                    <div class="svg-loader">
+                        <img src="{{ asset('/backend/img/svg-loader.svg') }}" alt="loader">
+                    </div>
+                    <div class="buttons">
+                        <div class="top">
+                            <div class="clear-text">
+                                <img src="{{ asset('/backend/img/delete.svg') }}" alt="delete">
+                            </div>
+                            <div class="action back-action">
+                                <img src="{{ asset('/backend/img/prev.svg') }}" alt="prev">
+                            </div>
+                            <div class="action next-action">
+                                <img src="{{ asset('/backend/img/next.svg') }}" alt="next">
+                            </div>
+                        </div>
+                        <div class="bottom">
+                            <div class="copy-text">
+                                <img src="{{ asset('/backend/img/copy.svg') }}" alt="copy">
+                                <div class="tooltip">Copied to clipboard</div>
+                            </div>
+                            <div class="download-text">
+                                <img src="{{ asset('/backend/img/download.svg') }}" alt="download">
+                            </div>
+                        </div>
+                    </div>
                 </div>
                 <div class="form-group">
                     <input type="text" name="excludes" class="form-control" placeholder="{{ $block_content['input_placeholder'] ?? null }}">
                 </div>
-                <div class="form-group radio-buttons">
-                    <div class="text">{{ __('Simple mode:') }}</div>
-                    <label class="radio-inline" for="inlineRadio1">
-                        <input name="mode" checked type="radio" id="inlineRadio1" value="simple">
-                        <span></span>{{ __('Simple') }}
-                    </label>
-                    <label class="radio-inline" for="inlineRadio2">
-                        <input name="mode" type="radio" id="inlineRadio2" value="advance">
-                        <span></span>{{ __('Advance') }}
-                    </label>
-                </div>
+                <div style="width: 50%;"></div>
                 <div class="form-group submit">
                     <button type="submit" class="button black" id="summarize-button">{{ __('Rephrase') }}</button>
                 </div>
