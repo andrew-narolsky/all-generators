@@ -33,6 +33,9 @@ Route::post('/summarize-text', [App\Http\Controllers\ConclusionGenerator\Conclus
 Route::post('/get-paraphrasing-text', [App\Http\Controllers\ParaphrasingTool\ParaphrasingToolController::class, 'getParaphrasingText']);
 // Add votes
 Route::post('/add-vote', [App\Http\Controllers\Admin\PageController::class, 'addVote']);
+// Save document
+Route::post('/get-word-document-link', [App\Http\Controllers\DocumentController::class, 'getWordDocumentLink']);
+Route::post('/get-pdf-document-link', [App\Http\Controllers\DocumentController::class, 'getPdfDocumentLink']);
 
 // Admin
 Route::group([
