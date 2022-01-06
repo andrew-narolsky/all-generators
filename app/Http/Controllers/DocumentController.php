@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Filesystem\Filesystem;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 use PhpOffice\PhpWord\IOFactory;
@@ -36,6 +37,10 @@ class DocumentController extends Controller
      */
     public function getPdfDocumentLink(Request $request)
     {
-
+        $file_name = Str::random(10) . '.pdf';
+        $pdf = App::make('dompdf.wrapper');
+        $pdf->loadHTML($request->get('text'));
+        $pdf->save(public_path('files/' . $file_name));
+        return Storage::disk('files')->url($file_name);
     }
 }
