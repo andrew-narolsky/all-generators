@@ -517,6 +517,10 @@ button {
     padding: 50px 90px 40px
 }
 
+.result-paraphrasing .form form .buttons.hidden {
+    display: none;
+}
+
 @media screen and (max-width: 1199px) {
     .form form {
         width: calc(100% + 30px);

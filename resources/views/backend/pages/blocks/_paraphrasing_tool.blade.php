@@ -19,6 +19,20 @@
                     <input type="hidden" id="text">
                     <textarea class="form-control" name="text" rows="3" placeholder="{{ $block_content['textarea_placeholder'] ?? null }}"></textarea>
                     <div class="result-text"></div>
+                    <div class="flex__wrap links-wrap">
+                        <div class="words-count">Words: <span>0</span></div>
+                        <div class="download-links">
+                            <a href="#" class="pdf" download="download">
+                                <img src="{{ asset('/backend/img/pdf.png') }}" alt="pdf">
+                            </a>
+                            <a href="#" class="doc" download="download">
+                                <img src="{{ asset('/backend/img/doc.png') }}" alt="doc">
+                            </a>
+                            <a href="#" class="docx" download="download">
+                                <img src="{{ asset('/backend/img/docx.png') }}" alt="docx">
+                            </a>
+                        </div>
+                    </div>
                     <div class="svg-loader">
                         <img src="{{ asset('/backend/img/svg-loader.svg') }}" alt="loader">
                     </div>
@@ -48,7 +62,7 @@
                 <div class="form-group">
                     <input type="text" name="excludes" class="form-control" placeholder="{{ $block_content['input_placeholder'] ?? null }}">
                 </div>
-                <div style="width: 50%;"></div>
+                <div class="form-group radio-buttons"><div class="text"></div></div>
                 <div class="form-group submit">
                     <button type="submit" class="button black" id="summarize-button">{{ __('Rephrase') }}</button>
                 </div>

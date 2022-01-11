@@ -150,6 +150,11 @@
                                         <span class="sub-item">{{ __('Conclusion generator') }}</span>
                                     </a>
                                 </li>
+                                <li>
+                                    <a href="{{ route('admin.paraphrasing-tool.index') }}">
+                                        <span class="sub-item">{{ __('Paraphrasing tools') }}</span>
+                                    </a>
+                                </li>
                             </ul>
                         </div>
                     </li>
@@ -202,6 +207,11 @@
                                 <li>
                                     <a href="{{ route('settings.index') }}">
                                         <span class="sub-item">{{ __('Settings') }}</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="{{ route('api-keys.index') }}">
+                                        <span class="sub-item">{{ __('API keys') }}</span>
                                     </a>
                                 </li>
                             </ul>

@@ -36,7 +36,7 @@ function ConclusionGenerator()
                 parent: '.form-group'
             },
             messages: {
-                required: "You must provide a text that is at least 200 words or 1000 characters long.",
+                required: "You must provide a text that is at least 200 words or :min characters long.",
                 string: {
                     min: 'You must provide a text that is at least 200 words or :min characters long.',
                     max: ':max characters MAX.'

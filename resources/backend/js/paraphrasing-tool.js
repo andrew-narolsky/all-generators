@@ -16,18 +16,19 @@ function ParaphrasingTool()
     this.back = this.container.find('.back-action');
     this.next = this.container.find('.next-action');
     this.copy = this.container.find('.copy-text');
+    this.download = this.container.find('.download-text');
 
     this.validator = new Validator([
         {
             field: this.fields.text,
-            rules: 'required|min:3|max:5000',
+            rules: 'required|min:100|max:5000',
             selectors: {
                 insert_position: 'parent_last',
                 span_error: '.error-message',
                 parent: '.form-group'
             },
             messages: {
-                required: "You must provide a text that is at least 200 words or 1000 characters long.",
+                required: "You must provide a text that is at least 200 words or :min characters long.",
                 string: {
                     min: 'You must provide a text that is at least 200 words or :min characters long.',
                     max: ':max characters MAX.'
@@ -41,7 +42,14 @@ function ParaphrasingTool()
 
 ParaphrasingTool.prototype.InitEvents = function()
 {
+    this.fields.text[0].addEventListener('input', this.pasteText);
     this.submit.click($.proxy(this.onSubmitParaphrasingTool, this));
+}
+
+ParaphrasingTool.prototype.pasteText = function(event)
+{
+    document.querySelector('.words-count span').innerHTML = event.target.value.length;
+    document.querySelector('.words-count').classList.add('active');
 }
 
 ParaphrasingTool.prototype.RemoveChanges = function(event)
@@ -68,6 +76,50 @@ ParaphrasingTool.prototype.ClearText = function(event)
     event.preventDefault();
     document.querySelector('.result-text').innerHTML = '';
     document.querySelector('body').classList.remove('result-paraphrasing');
+    document.querySelector('.download-links').classList.remove('active');
+
+    document.querySelector('.words-count span').outerText = 0;
+    document.querySelector('.words-count').classList.remove('active');
+}
+
+ParaphrasingTool.prototype.GetDownloadLinks = function()
+{
+    var data = {
+        text: this.result_wrap[0].innerText,
+        ext: ''
+    }
+
+    this.container.addClass('loading');
+    document.querySelector('form .buttons').classList.add('hidden');
+
+    // pdf
+    $.post('/get-pdf-document-link', data, function(response) {
+        document.querySelector('.pdf').href = response;
+    }).fail(function() {
+        console.log('error');
+    });
+
+    // doc
+    data.ext = 'doc';
+    $.post('/get-word-document-link', data, function(response) {
+        document.querySelector('.doc').href = response;
+    }).fail(function() {
+        console.log('error');
+    });
+
+    // docx
+    data.ext = 'docx';
+    $.post('/get-word-document-link', data, function(response) {
+        document.querySelector('.docx').href = response;
+    }).fail(function() {
+        console.log('error');
+    });
+
+    setTimeout( () => {
+        this.container.removeClass('loading');
+        document.querySelector('.download-links').classList.add('active');
+        document.querySelector('form .buttons').classList.remove('hidden');
+    }, 500);
 }
 
 ParaphrasingTool.prototype.CopyText = function(event)
@@ -145,6 +197,7 @@ ParaphrasingTool.prototype.TooltipUseResult = function(event)
     event.preventDefault();
 
     var newText = event.target.previousElementSibling.value;
+    if (!newText) return false;
     ParaphrasingTool.prototype.ChangeWord(event, newText);
 }
 
@@ -178,6 +231,26 @@ ParaphrasingTool.prototype.InitTooltip = function(event)
 {
     this.CloseTooltip(event);
 
+    // parent block sizes
+    var parentHeight = event.target.closest('.result-text').scrollHeight
+    var parentWidth = event.target.closest('.result-text').offsetWidth
+    // position
+    var offsetTop = event.target.offsetTop;
+    var offsetLeft = event.target.offsetLeft;
+    var offsetHeight = event.target.offsetHeight;
+    // add classes
+    var classes = '';
+
+    if (parentWidth - offsetLeft < 230) {
+        classes += ' right-to-left';
+    }
+    if (offsetHeight > 18) {
+        classes += ' move-to-top';
+    }
+    if (parentHeight - offsetTop < 164) {
+        classes += ' bottom-to-top';
+    }
+
     var str = event.target.getAttribute('data-title');
     var arr = str.split('|');
     var html = '';
@@ -187,7 +260,7 @@ ParaphrasingTool.prototype.InitTooltip = function(event)
         html += '<span>' + arr[i] + '</span>';
     }
     search = '<span class="search"><input type="text" placeholder="Your suggestion"><button>Use</button></span>';
-    let content = '<span class="qtiperar-tooltip"><span class="scrollbar">' + html + '</span>' + search + '<span class="close"></span></span>';
+    let content = '<span class="qtiperar-tooltip' + classes + '"><span class="scrollbar">' + html + '</span>' + search + '<span class="close"></span></span>';
     event.target.insertAdjacentHTML('beforeend', content);
     event.target.querySelector('.qtiperar-tooltip').classList.add('opened');
 
@@ -226,11 +299,12 @@ ParaphrasingTool.prototype.onSubmitParaphrasingTool = function(event)
     $this.container.addClass('loading');
 
     $.post('/get-paraphrasing-text', data, function(response) {
-        $this.container.removeClass('loading');
-        document.querySelector('body').classList.add('result-paraphrasing');
-        // console.log(response);
-        $this.setValues(JSON.parse(response).paraphrasedContent);
-        $this.submit.prop('disabled', false);
+        setTimeout( () => {
+            $this.container.removeClass('loading');
+            document.querySelector('body').classList.add('result-paraphrasing');
+            $this.setValues(JSON.parse(response).paraphrasedContent);
+            $this.submit.prop('disabled', false);
+        }, 500);
     }).fail(function(data) {
         $this.container.removeClass('loading');
         $this.submit.prop('disabled', false);
@@ -246,8 +320,14 @@ ParaphrasingTool.prototype.setValues = function(data)
     this.container.find('.qtiperar').click(this.InitTooltip.bind(this));
     this.clear.click(this.ClearText.bind(this));
     this.copy.click(this.CopyText.bind(this));
+    this.download.click(this.GetDownloadLinks.bind(this));
     this.next.click(this.RemoveChanges.bind(this));
     this.back.click(this.RemoveChanges.bind(this));
+
+    this.container.find('.radio-buttons').css('display', 'block');
+    this.container.find('.radio-buttons .text').html('Need better results? <a href="' + $('.prices .button').attr('href') + '">Get expert editing help!</a>');
+    this.submit.text('Resubmit');
+    this.submit.attr('onclick', 'window.location.reload()');
 };
 
 $(function()

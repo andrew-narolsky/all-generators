@@ -49,6 +49,12 @@ Route::group([
         Route::get('{id}', [App\Http\Controllers\Admin\ConclusionGeneratorController::class, 'show'])->name('admin.conclusion-generator.show');
     });
 
+    Route::group(['prefix' => 'paraphrasing-tool'], function ()
+    {
+        Route::get('', [App\Http\Controllers\Admin\ParaphrasingToolController::class, 'index'])->name('admin.paraphrasing-tool.index');
+        Route::get('{id}', [App\Http\Controllers\Admin\ParaphrasingToolController::class, 'show'])->name('admin.paraphrasing-tool.show');
+    });
+
     Route::resource('/pages', App\Http\Controllers\Admin\PageController::class, ['only' => ['index', 'create', 'store', 'edit', 'update', 'destroy']]);
     Route::resource('/templates', App\Http\Controllers\Admin\TemplateController::class, ['only' => ['index', 'create', 'store', 'edit', 'update', 'destroy']]);
 
@@ -56,6 +62,7 @@ Route::group([
     Route::post('/delete-block', [App\Http\Controllers\Admin\TemplateController::class, 'deleteBlock']);
 
     Route::resource('/settings', App\Http\Controllers\Admin\SettingsController::class, ['only' => ['index','store']]);
+    Route::resource('/api-keys', App\Http\Controllers\Admin\ApiKeysController::class, ['only' => ['index','store']]);
 });
 
 // Pages
