@@ -2,6 +2,7 @@
 /public/hot
 /public/storage
 /public/admin
+/public/adminer.php
 /public/backend
 /public/files
 /storage/*.key

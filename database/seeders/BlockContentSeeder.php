@@ -246,6 +246,31 @@ class BlockContentSeeder extends Seeder
                 'created_at' => date('Y-m-d H:i:s'),
                 'updated_at' => date('Y-m-d H:i:s'),
             ],
+            // FAQ
+            [
+                'text' => serialize([
+                    'title' => 'Frequently Asked Questions',
+                    'subtitle' => '',
+                    'faq' => [
+                        1 => [
+                            'question' => 'How do you write a good conclusion?',
+                            'answer' => '<p>By knowing academic rules and following them. The conclusion is a 10%-long essay part that has to restate major findings from your paper. It should be original yet concise.</p>'
+                        ],
+                        2 => [
+                            'question' => 'What is a conclusion generator?',
+                            'answer' => '<p>Concluding paragraph generator is a tool or an expert who could produce conclusion on the basis of the text you wrote. This could be automatic or customized work: the decision is up to you.</p>'
+                        ],
+                        3 => [
+                            'question' => 'What is the best free conclusion generator?',
+                            'answer' => '<p>Among free generators, we could recommend Summarizing-Tool. It is as effective as an online machine could be. But of course, human help still has better quality.</p>'
+                        ]
+                    ]
+                ]),
+                'block_id' => 8,
+                'block_template_id' => 13,
+                'created_at' => date('Y-m-d H:i:s'),
+                'updated_at' => date('Y-m-d H:i:s'),
+            ],
             // Banner
             [
                 'text' => serialize([
