@@ -21,7 +21,7 @@ function ParaphrasingTool()
     this.validator = new Validator([
         {
             field: this.fields.text,
-            rules: 'required|min:100|max:5000',
+            rules: 'required|min:1000|max:5000',
             selectors: {
                 insert_position: 'parent_last',
                 span_error: '.error-message',
