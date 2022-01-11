@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\ParaphrasingTool;
 use App\Http\Controllers\Controller;
+use App\Models\Page;
 use App\Models\ParaphrasingTool;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
@@ -9,7 +10,22 @@ use Illuminate\Support\Facades\Validator;
 
 class ParaphrasingToolController extends Controller
 {
-    public function getParaphrasingText(Request $request)
+    const CONCLUSION_GENERATOR_PAGE_ID = 2;
+
+    public function getPageStars()
+    {
+        $page = Page::select('count_votes', 'stars')->find(self::CONCLUSION_GENERATOR_PAGE_ID);
+        return $page;
+    }
+
+    public function setPageStars()
+    {
+        $page = Page::find(self::CONCLUSION_GENERATOR_PAGE_ID);
+        $page->update(['count_votes' => ($page->count_votes + 1)]);
+        return $page->count_votes;
+    }
+
+    public function paraphrasingText(Request $request)
     {
         $data = $request->only('text');
 

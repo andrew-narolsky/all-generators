@@ -298,7 +298,7 @@ ParaphrasingTool.prototype.onSubmitParaphrasingTool = function(event)
     var $this = this;
     $this.container.addClass('loading');
 
-    $.post('/get-paraphrasing-text', data, function(response) {
+    $.post('/paraphrasing-text', data, function(response) {
         setTimeout( () => {
             $this.container.removeClass('loading');
             document.querySelector('body').classList.add('result-paraphrasing');
