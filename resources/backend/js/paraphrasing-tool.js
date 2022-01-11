@@ -28,10 +28,10 @@ function ParaphrasingTool()
                 parent: '.form-group'
             },
             messages: {
-                required: "You must provide a text that is at least 200 words or :min characters long.",
+                required: "You must provide a text that is at least 200 words or 1000 characters long.",
                 string: {
-                    min: 'You must provide a text that is at least 200 words or :min characters long.',
-                    max: ':max characters MAX.'
+                    min: 'You must provide a text that is at least 200 words or 1000 characters long.',
+                    max: '5000 characters MAX.'
                 }
             }
         },
@@ -80,6 +80,10 @@ ParaphrasingTool.prototype.ClearText = function(event)
 
     document.querySelector('.words-count span').outerText = 0;
     document.querySelector('.words-count').classList.remove('active');
+
+    this.container.find('.radio-buttons').css('display', 'none');
+    this.submit.text('Rephrase');
+    this.submit.removeAttr('onclick');
 }
 
 ParaphrasingTool.prototype.GetDownloadLinks = function()
