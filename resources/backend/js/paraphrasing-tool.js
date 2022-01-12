@@ -284,40 +284,43 @@ ParaphrasingTool.prototype.InitTooltip = function(event)
 ParaphrasingTool.prototype.onSubmitParaphrasingTool = function(event)
 {
     event.preventDefault();
-    this.submit.prop('disabled', true);
 
-    var validator = this.validator;
+    if (!document.querySelector('body').classList.contains('result-paraphrasing')) {
+        this.submit.prop('disabled', true);
 
-    this.validator.clearErrors();
-    this.validator.forceValidate();
+        var validator = this.validator;
 
-    if (validator.hasErrors(true)) {
-        this.submit.prop('disabled', false);
-        return false;
-    }
+        this.validator.clearErrors();
+        this.validator.forceValidate();
 
-    var data = {
-        excludes: this.fields.excludes.val(),
-        text: this.fields.text.val(),
-        mode: this.container.find('input[name=mode]:checked').val(),
-        _token: this.container.find('input[name=_token]').val(),
-    }
+        if (validator.hasErrors(true)) {
+            this.submit.prop('disabled', false);
+            return false;
+        }
 
-    var $this = this;
-    $this.container.addClass('loading');
+        var data = {
+            excludes: this.fields.excludes.val(),
+            text: this.fields.text.val(),
+            mode: this.container.find('input[name=mode]:checked').val(),
+            _token: this.container.find('input[name=_token]').val(),
+        }
 
-    $.post('/paraphrasing-text', data, function(response) {
-        setTimeout( () => {
+        var $this = this;
+        $this.container.addClass('loading');
+
+        $.post('/paraphrasing-text', data, function(response) {
+            setTimeout( () => {
+                $this.container.removeClass('loading');
+                document.querySelector('body').classList.add('result-paraphrasing');
+                $this.setValues(JSON.parse(response).paraphrasedContent);
+                $this.submit.prop('disabled', false);
+            }, 500);
+        }).fail(function(data) {
             $this.container.removeClass('loading');
-            document.querySelector('body').classList.add('result-paraphrasing');
-            $this.setValues(JSON.parse(response).paraphrasedContent);
             $this.submit.prop('disabled', false);
-        }, 500);
-    }).fail(function(data) {
-        $this.container.removeClass('loading');
-        $this.submit.prop('disabled', false);
-        validator.addErrorsFromJson(data, true);
-    });
+            validator.addErrorsFromJson(data, true);
+        });
+    }
 }
 
 ParaphrasingTool.prototype.setValues = function(data)

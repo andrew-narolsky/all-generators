@@ -174,18 +174,6 @@
     height: 300px;
 }
 
-/*.result-paraphrasing .form form .buttons {*/
-/*    display: flex;*/
-/*    flex-wrap: wrap;*/
-/*    position: absolute;*/
-/*    right: 40px;*/
-/*    top: 50px;*/
-/*    width: 30px;*/
-/*    justify-content: space-between;*/
-/*    flex-direction: column;*/
-/*    height: 300px;*/
-/*}*/
-
 .buttons .clear-text,
 .buttons .action,
 .buttons .copy-text,
