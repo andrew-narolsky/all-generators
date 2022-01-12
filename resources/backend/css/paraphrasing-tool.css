@@ -158,15 +158,11 @@
     left: auto;
 }
 
-.result-paraphrasing .form form {
+.form form {
     position: relative;
 }
 
 .form form .buttons {
-    display: none;
-}
-
-.result-paraphrasing .form form .buttons {
     display: flex;
     flex-wrap: wrap;
     position: absolute;
@@ -178,7 +174,42 @@
     height: 300px;
 }
 
-.result-paraphrasing .form form .buttons .bottom {
+/*.result-paraphrasing .form form .buttons {*/
+/*    display: flex;*/
+/*    flex-wrap: wrap;*/
+/*    position: absolute;*/
+/*    right: 40px;*/
+/*    top: 50px;*/
+/*    width: 30px;*/
+/*    justify-content: space-between;*/
+/*    flex-direction: column;*/
+/*    height: 300px;*/
+/*}*/
+
+.buttons .clear-text,
+.buttons .action,
+.buttons .copy-text,
+.buttons .download-text {
+    display: none;
+}
+
+.buttons .clear-text.active {
+    display: block;
+}
+
+.result-paraphrasing .buttons .clear-text,
+.result-paraphrasing .buttons .action,
+.result-paraphrasing .buttons .copy-text,
+.result-paraphrasing .buttons .download-text {
+    display: block;
+}
+
+.result-paraphrasing .buttons .clear-text.active {
+    cursor: inherit;
+    opacity: .5;
+}
+
+.form form .buttons .bottom {
     margin-top: auto;
 }
 

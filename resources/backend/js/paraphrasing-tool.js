@@ -28,9 +28,9 @@ function ParaphrasingTool()
                 parent: '.form-group'
             },
             messages: {
-                required: "You must provide a text that is at least 200 words or 1000 characters long.",
+                required: "You must provide a text that is 1000 characters long.",
                 string: {
-                    min: 'You must provide a text that is at least 200 words or 1000 characters long.',
+                    min: 'You must provide a text that is 1000 characters long.',
                     max: '5000 characters MAX.'
                 }
             }
@@ -44,12 +44,15 @@ ParaphrasingTool.prototype.InitEvents = function()
 {
     this.fields.text[0].addEventListener('input', this.pasteText);
     this.submit.click($.proxy(this.onSubmitParaphrasingTool, this));
+    this.clear.click(this.ClearText.bind(this));
 }
 
 ParaphrasingTool.prototype.pasteText = function(event)
 {
-    document.querySelector('.words-count span').innerHTML = event.target.value.length;
+    var arr = event.target.value.split(' ');
+    document.querySelector('.words-count span').innerHTML = arr.length;
     document.querySelector('.words-count').classList.add('active');
+    document.querySelector('.clear-text').classList.add('active');
 }
 
 ParaphrasingTool.prototype.RemoveChanges = function(event)
@@ -74,16 +77,18 @@ ParaphrasingTool.prototype.RemoveChanges = function(event)
 ParaphrasingTool.prototype.ClearText = function(event)
 {
     event.preventDefault();
-    document.querySelector('.result-text').innerHTML = '';
-    document.querySelector('body').classList.remove('result-paraphrasing');
-    document.querySelector('.download-links').classList.remove('active');
-
-    document.querySelector('.words-count span').outerText = 0;
-    document.querySelector('.words-count').classList.remove('active');
-
-    this.container.find('.radio-buttons').css('display', 'none');
-    this.submit.text('Rephrase');
-    this.submit.removeAttr('onclick');
+    document.querySelector('.words-count span').innerHTML = 0;
+    this.fields.text.val('');
+    // document.querySelector('.result-text').innerHTML = '';
+    // document.querySelector('body').classList.remove('result-paraphrasing');
+    // document.querySelector('.download-links').classList.remove('active');
+    //
+    // document.querySelector('.words-count span').outerText = 0;
+    // document.querySelector('.words-count').classList.remove('active');
+    //
+    // this.container.find('.radio-buttons').css('display', 'none');
+    // this.submit.text('Rephrase');
+    // this.submit.removeAttr('onclick');
 }
 
 ParaphrasingTool.prototype.GetDownloadLinks = function()
@@ -321,7 +326,6 @@ ParaphrasingTool.prototype.setValues = function(data)
     this.result_wrap.html(data);
 
     this.container.find('.qtiperar').click(this.InitTooltip.bind(this));
-    this.clear.click(this.ClearText.bind(this));
     this.copy.click(this.CopyText.bind(this));
     this.download.click(this.GetDownloadLinks.bind(this));
     this.next.click(this.RemoveChanges.bind(this));
