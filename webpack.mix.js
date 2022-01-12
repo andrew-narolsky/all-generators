@@ -30,8 +30,8 @@ mix.scripts([
 ], 'public/backend/js/script.min.js');
 
 mix.copyDirectory('resources/backend/img', 'public/backend/img');
-// mix.copyDirectory('resources/backend/favicon', 'public/backend/favicon');
-// mix.copyDirectory('resources/backend/fonts', 'public/backend/fonts');
-//
-// // admin
-// mix.copyDirectory('resources/admin', 'public/admin');
+mix.copyDirectory('resources/backend/favicon', 'public/backend/favicon');
+mix.copyDirectory('resources/backend/fonts', 'public/backend/fonts');
+
+// admin
+mix.copyDirectory('resources/admin', 'public/admin');
