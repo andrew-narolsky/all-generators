@@ -28,3 +28,7 @@ Route::post('/get-paraphrasing-tool-stars',
     [App\Http\Controllers\ParaphrasingTool\ParaphrasingToolController::class, 'getPageStars'])->middleware('api-token');
 Route::post('/set-paraphrasing-tool-stars',
     [App\Http\Controllers\ParaphrasingTool\ParaphrasingToolController::class, 'setPageStars'])->middleware('api-token');
+
+// Save document
+Route::post('/get-word-document-link', [App\Http\Controllers\DocumentController::class, 'getWordDocumentLink'])->middleware('api-token');
+Route::post('/get-pdf-document-link', [App\Http\Controllers\DocumentController::class, 'getPdfDocumentLink'])->middleware('api-token');
