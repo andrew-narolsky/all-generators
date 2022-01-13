@@ -1,6 +1,7 @@
 {
     "/backend/css/style.min.css": "/backend/css/style.min.css",
     "/backend/js/script.min.js": "/backend/js/script.min.js",
+    "/backend/img/.DS_Store": "/backend/img/.DS_Store",
     "/backend/img/Star.svg": "/backend/img/Star.svg",
     "/backend/img/Star_1.svg": "/backend/img/Star_1.svg",
     "/backend/img/checker.svg": "/backend/img/checker.svg",
@@ -88,5 +89,6 @@
     "/backend/fonts/NoeDisplay.ttf": "/backend/fonts/NoeDisplay.ttf",
     "/backend/fonts/NoeDisplay.woff": "/backend/fonts/NoeDisplay.woff",
     "/backend/fonts/NoeDisplay.woff2": "/backend/fonts/NoeDisplay.woff2",
-    "/backend/fonts/stylesheet.css": "/backend/fonts/stylesheet.css"
+    "/backend/fonts/stylesheet.css": "/backend/fonts/stylesheet.css",
+    "/admin/.DS_Store": "/admin/.DS_Store"
 }

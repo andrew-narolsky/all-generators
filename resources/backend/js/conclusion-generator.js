@@ -21,9 +21,9 @@ function ConclusionGenerator()
             },
             rules: 'required|between:1,100',
             messages: {
-                required: "You must provide a title that is between 1 and 100 characters.",
+                required: 'You must provide a title that is between 1 and 100 characters.',
                 string: {
-                    between: 'You must provide a title that is between :min and :max characters.'
+                    between: 'You must provide a title that is between 1 and 100 characters.'
                 }
             }
         },
@@ -36,10 +36,10 @@ function ConclusionGenerator()
                 parent: '.form-group'
             },
             messages: {
-                required: "You must provide a text that is at least 200 words or :min characters long.",
+                required: 'You must provide a text that is at least 200 words or 1000 characters long.',
                 string: {
-                    min: 'You must provide a text that is at least 200 words or :min characters long.',
-                    max: ':max characters MAX.'
+                    min: 'You must provide a text that is at least 200 words or 1000 characters long.',
+                    max: '15000 characters MAX.'
                 }
             }
         },

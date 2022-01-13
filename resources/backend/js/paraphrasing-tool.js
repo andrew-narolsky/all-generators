@@ -28,7 +28,7 @@ function ParaphrasingTool()
                 parent: '.form-group'
             },
             messages: {
-                required: "You must provide a text that is 1000 characters long.",
+                required: 'You must provide a text that is 1000 characters long.',
                 string: {
                     min: 'You must provide a text that is 1000 characters long.',
                     max: '5000 characters MAX.'

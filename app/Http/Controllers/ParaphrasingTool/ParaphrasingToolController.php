@@ -36,7 +36,7 @@ class ParaphrasingToolController extends Controller
         $message = [
             'text.required' => 'You must provide a text that is 1000 characters long.',
             'text.min' => 'You must provide a text that is 1000 characters long.',
-            'text.max' => '1000 characters MAX.',
+            'text.max' => '5000 characters MAX.',
         ];
 
         $validator = Validator::make($data, $rules, $message);
