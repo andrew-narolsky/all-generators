@@ -29,16 +29,16 @@ function ConclusionGenerator()
         },
         {
             field: this.fields.text,
-            rules: 'required|min:1000|max:15000',
+            rules: 'required|min:100|max:15000',
             selectors: {
                 insert_position: 'parent_last',
                 span_error: '.error-message',
                 parent: '.form-group'
             },
             messages: {
-                required: 'You must provide a text that is at least 200 words or 1000 characters long.',
+                required: 'You must provide a text that is at least 200 words',
                 string: {
-                    min: 'You must provide a text that is at least 200 words or 1000 characters long.',
+                    min: 'You must provide a text that is at least 200 words',
                     max: '15000 characters MAX.'
                 }
             }

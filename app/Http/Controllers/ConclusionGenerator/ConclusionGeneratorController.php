@@ -33,14 +33,14 @@ class ConclusionGeneratorController extends Controller
 
         $rules = [
             'title' => 'required|between:1,100',
-            'text' => 'required|min:1000|max:15000',
+            'text' => 'required|min:1|max:15000',
         ];
 
         $message = [
             'title.required' => 'You must provide a title that is between 1 and 100 characters.',
             'title.between' => 'You must provide a title that is between 1 and 100 characters.',
-            'text.required' => 'You must provide a text that is at least 200 words or 1000 characters long.',
-            'text.min' => 'You must provide a text that is at least 200 words or 1000 characters long.',
+            'text.required' => 'You must provide a text that is at least 200 words',
+            'text.min' => 'You must provide a text that is at least 200 words',
             'text.max' => '15000 characters MAX.',
         ];
 
@@ -50,11 +50,15 @@ class ConclusionGeneratorController extends Controller
             return response()->json( ['errors' => $validator->errors()], 422);
         }
 
-        $minimum_words_limit = (int)$data['count'] ?? self::MINIMUM_WORDS_LIMIT;
+        $minimum_words_limit = self::MINIMUM_WORDS_LIMIT;
         $word_count = count(preg_split('/\s+/u', $data['text'], null, PREG_SPLIT_NO_EMPTY));
 
         if ($word_count < $minimum_words_limit) {
-            return response()->json( ['errors' => ['text' => ['You must provide a text that is at least ' . $minimum_words_limit . ' words or 1000 characters long.']]], 422);
+            return response()->json( ['errors' => ['text' => ['You must provide a text that is at least ' . $minimum_words_limit . ' words.']]], 422);
+        }
+
+        if (preg_match('/[А-Яа-я]/', $data['text'])) {
+            return response()->json( ['errors' => ['text' => ['You must provide a text that is written in Latin characters']]], 422);
         }
 
         $items = preg_split('/(?<=[.?!])\s+(?=[a-z])/i', $data['text']);
