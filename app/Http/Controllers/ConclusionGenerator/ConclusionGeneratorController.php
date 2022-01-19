@@ -53,12 +53,16 @@ class ConclusionGeneratorController extends Controller
         $minimum_words_limit = self::MINIMUM_WORDS_LIMIT;
         $word_count = count(preg_split('/\s+/u', $data['text'], null, PREG_SPLIT_NO_EMPTY));
 
+        if ($word_count < $data['count']) {
+            return response()->json(['errors' => ['text' => ['The original text must contain more words than the summary']]], 422);
+        }
+
         if ($word_count < $minimum_words_limit) {
-            return response()->json( ['errors' => ['text' => ['You must provide a text that is at least ' . $minimum_words_limit . ' words.']]], 422);
+            return response()->json(['errors' => ['text' => ['You must provide a text that is at least ' . $minimum_words_limit . ' words.']]], 422);
         }
 
         if (preg_match('/[А-Яа-я]/', $data['text'])) {
-            return response()->json( ['errors' => ['text' => ['You must provide a text that is written in Latin characters']]], 422);
+            return response()->json(['errors' => ['text' => ['You must provide a text that is written in Latin characters']]], 422);
         }
 
         $items = preg_split('/(?<=[.?!])\s+(?=[a-z])/i', $data['text']);
@@ -85,7 +89,7 @@ class ConclusionGeneratorController extends Controller
 
             return response()->json(['errors' => [], 'text' => $text], 200);
         } else {
-            return response()->json( ['errors' => ['text' => ['You must provide a text that is at least ' . self::MINIMUM_SENTENCES_LIMIT . ' sentences long.']]], 422);
+            return response()->json(['errors' => ['text' => ['You must provide a text that is at least ' . self::MINIMUM_SENTENCES_LIMIT . ' sentences long.']]], 422);
         }
     }
 }
