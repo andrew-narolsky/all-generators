@@ -53,7 +53,7 @@ class ConclusionGeneratorController extends Controller
         $minimum_words_limit = self::MINIMUM_WORDS_LIMIT;
         $word_count = count(preg_split('/\s+/u', $data['text'], null, PREG_SPLIT_NO_EMPTY));
 
-        if (preg_match('/[А-Яа-я]/', $data['text'])) {
+        if (preg_match('/[а-яё]/i', $data['text'])) {
             return response()->json(['errors' => ['text' => ['You must provide a text that is written in Latin characters']]], 422);
         }
 
