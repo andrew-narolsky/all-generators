@@ -1,9 +1,14 @@
 function ParaphrasingTool()
 {
     this.container = $('.paraphrasing_tool');
+    this.API_url = 'http://localhost/';
+    // this.API_url = 'https://apitools.x7p.org/';
+    this.API_key = '53V363XcSVOEsqRtHjxW';
+    this.prevArray = [];
+    this.nextArray = [];
 
     this.fields = {
-        excludes: this.container.find('input[name=excludes]'),
+        excludes: this.container.find('textarea[name=excludes]'),
         text: this.container.find('textarea[name=text]'),
         mode: this.container.find('input[name=mode]'),
     }
@@ -58,19 +63,44 @@ ParaphrasingTool.prototype.pasteText = function(event)
 ParaphrasingTool.prototype.RemoveChanges = function(event)
 {
     event.preventDefault();
-    if (!window.textData) return false;
+    if (!this.prevArray.length) return false;
 
-    var id = window.textData.id;
-    var oldText = window.textData.oldText;
-    var newText = window.textData.newText;
+    // change nextArray
+    var str = this.result_wrap[0].innerHTML.replace(/<span class="qtiperar-tooltip opened">(.)+<\/span>/i, '');
+    this.nextArray.unshift(str);
+    // this.nextArray.unshift(this.prevArray[0]);
+    this.next.removeAttr('disabled');
 
-    var words = document.querySelectorAll('.result-text b');
-    words[id].innerText = oldText;
+    // change result
+    this.result_wrap.html(this.prevArray[0]);
+    this.result_wrap.find('.qtiperar').click(this.InitTooltip.bind(this));
 
-    window.textData = {
-        'id' : id,
-        'oldText': newText,
-        'newText': oldText
+    // remove last change
+    this.prevArray.splice(0, 1);
+
+    if (!this.prevArray.length) {
+        this.back.attr('disabled', 'disabled');
+    }
+}
+
+ParaphrasingTool.prototype.AddChanges = function(event)
+{
+    event.preventDefault();
+    if (!this.nextArray.length) return false;
+
+    // change result
+    this.result_wrap.html(this.nextArray[0]);
+    this.result_wrap.find('.qtiperar').click(this.InitTooltip.bind(this));
+
+    // // change nextArray
+    // this.prevArray.unshift(this.nextArray[0]);
+    // this.prev.removeAttr('disabled');
+
+    // remove next change
+    this.nextArray.splice(0, 1);
+
+    if (!this.nextArray.length) {
+        this.next.attr('disabled', 'disabled');
     }
 }
 
@@ -79,21 +109,12 @@ ParaphrasingTool.prototype.ClearText = function(event)
     event.preventDefault();
     document.querySelector('.words-count span').innerHTML = 0;
     this.fields.text.val('');
-    // document.querySelector('.result-text').innerHTML = '';
-    // document.querySelector('body').classList.remove('result-paraphrasing');
-    // document.querySelector('.download-links').classList.remove('active');
-    //
-    // document.querySelector('.words-count span').outerText = 0;
-    // document.querySelector('.words-count').classList.remove('active');
-    //
-    // this.container.find('.radio-buttons').css('display', 'none');
-    // this.submit.text('Rephrase');
-    // this.submit.removeAttr('onclick');
 }
 
 ParaphrasingTool.prototype.GetDownloadLinks = function()
 {
     var data = {
+        key: this.API_key,
         text: this.result_wrap[0].innerText,
         ext: ''
     }
@@ -102,7 +123,7 @@ ParaphrasingTool.prototype.GetDownloadLinks = function()
     document.querySelector('form .buttons').classList.add('hidden');
 
     // pdf
-    $.post('/get-pdf-document-link', data, function(response) {
+    $.post(this.API_url + 'api/get-pdf-document-link', data, function(response) {
         document.querySelector('.pdf').href = response;
     }).fail(function() {
         console.log('error');
@@ -110,7 +131,7 @@ ParaphrasingTool.prototype.GetDownloadLinks = function()
 
     // doc
     data.ext = 'doc';
-    $.post('/get-word-document-link', data, function(response) {
+    $.post(this.API_url + 'api/get-word-document-link', data, function(response) {
         document.querySelector('.doc').href = response;
     }).fail(function() {
         console.log('error');
@@ -118,7 +139,7 @@ ParaphrasingTool.prototype.GetDownloadLinks = function()
 
     // docx
     data.ext = 'docx';
-    $.post('/get-word-document-link', data, function(response) {
+    $.post(this.API_url + 'api/get-word-document-link', data, function(response) {
         document.querySelector('.docx').href = response;
     }).fail(function() {
         console.log('error');
@@ -135,17 +156,39 @@ ParaphrasingTool.prototype.CopyText = function(event)
 {
     event.preventDefault();
 
-    var text = this.result_wrap[0].innerText;
+    var textToCopy = this.result_wrap[0].innerText;
     var tooltip = document.querySelector('.copy-text .tooltip');
 
-    navigator.clipboard.writeText(text).then(() => {
-        tooltip.classList.add('opened');
-        setTimeout(function () {
-            tooltip.classList.remove('opened');
-        }, 1500);
-    }).catch(error => {
-        console.log('Something went wrong', error);
-    });
+    if (navigator.clipboard && window.isSecureContext) {
+        navigator.clipboard.writeText(text).then(() => {
+            tooltip.classList.add('opened');
+            setTimeout(function () {
+                tooltip.classList.remove('opened');
+            }, 1500);
+        }).catch(error => {
+            console.log('Something went wrong', error);
+        });
+    } else {
+        // text area method
+        let textArea = document.createElement("textarea");
+        textArea.value = textToCopy;
+        // make the textarea out of viewport
+        textArea.style.position = "fixed";
+        textArea.style.left = "-999999px";
+        textArea.style.top = "-999999px";
+        document.body.appendChild(textArea);
+        textArea.focus();
+        textArea.select();
+        return new Promise((res, rej) => {
+            // here the magic happens
+            document.execCommand('copy') ? res() : rej();
+            textArea.remove();
+            tooltip.classList.add('opened');
+            setTimeout(function () {
+                tooltip.classList.remove('opened');
+            }, 1500);
+        });
+    }
 }
 
 ParaphrasingTool.prototype.CloseTooltip = function(event)
@@ -170,7 +213,7 @@ ParaphrasingTool.prototype.ClickOnListElement = function()
     var list = document.querySelectorAll('.scrollbar span');
     for (var el in list) {
         if (list.hasOwnProperty(el)) {
-            list[el].addEventListener('click', this.ChangeWord);
+            list[el].addEventListener('click', this.ChangeWord.bind(this));
         }
     }
 }
@@ -206,12 +249,17 @@ ParaphrasingTool.prototype.TooltipUseResult = function(event)
 
     var newText = event.target.previousElementSibling.value;
     if (!newText) return false;
-    ParaphrasingTool.prototype.ChangeWord(event, newText);
+    this.ChangeWord(event, newText);
 }
 
 ParaphrasingTool.prototype.ChangeWord = function(event, text = false)
 {
     event.stopPropagation();
+
+    // add step on history array
+    var str = this.result_wrap[0].innerHTML.replace(/<span class="qtiperar-tooltip opened">(.)+<\/span>/i, '');
+    this.prevArray.unshift(str);
+    this.back.removeAttr('disabled');
 
     var newText = text ? text : event.target.outerText;
     var oldText = '';
@@ -224,12 +272,6 @@ ParaphrasingTool.prototype.ChangeWord = function(event, text = false)
                 id = el;
             }
         }
-    }
-
-    window.textData = {
-        'id' : id,
-        'oldText': oldText,
-        'newText': newText
     }
 
     event.target.closest('.qtiperar').innerText = newText;
@@ -275,7 +317,7 @@ ParaphrasingTool.prototype.InitTooltip = function(event)
     event.target.querySelector('.close').addEventListener('click', this.CloseTooltip);
     if (event.target.querySelector('.search')) {
         event.target.querySelector('.search input').addEventListener('click', this.StopPropagation);
-        event.target.querySelector('.search button').addEventListener('click', this.TooltipUseResult);
+        event.target.querySelector('.search button').addEventListener('click', this.TooltipUseResult.bind(this));
     }
 
     this.ClickOnListElement();
@@ -299,6 +341,7 @@ ParaphrasingTool.prototype.onSubmitParaphrasingTool = function(event)
         }
 
         var data = {
+            key: this.API_key,
             excludes: this.fields.excludes.val(),
             text: this.fields.text.val(),
             mode: this.container.find('input[name=mode]:checked').val(),
@@ -308,7 +351,7 @@ ParaphrasingTool.prototype.onSubmitParaphrasingTool = function(event)
         var $this = this;
         $this.container.addClass('loading');
 
-        $.post('/paraphrasing-text', data, function(response) {
+        $.post(this.API_url + 'api/paraphrasing-text', data, function(response) {
             setTimeout( () => {
                 $this.container.removeClass('loading');
                 document.querySelector('body').classList.add('result-paraphrasing');
@@ -328,15 +371,16 @@ ParaphrasingTool.prototype.setValues = function(data)
     this.fields.text.val('');
     this.result_wrap.html(data);
 
-    this.container.find('.qtiperar').click(this.InitTooltip.bind(this));
+    this.result_wrap.find('.qtiperar').click(this.InitTooltip.bind(this));
+    // this.container.find('.qtiperar').click(this.InitTooltip.bind(this));
     this.copy.click(this.CopyText.bind(this));
     this.download.click(this.GetDownloadLinks.bind(this));
-    this.next.click(this.RemoveChanges.bind(this));
+    this.next.click(this.AddChanges.bind(this));
     this.back.click(this.RemoveChanges.bind(this));
 
     this.container.find('.radio-buttons').css('display', 'block');
-    this.container.find('.radio-buttons .text').html('Need better results? <a href="' + $('.prices .button').attr('href') + '">Get expert editing help!</a>');
-    this.submit.text('Resubmit');
+    this.container.find('.radio-buttons .text').html('Need better results? <a href="' + $('.conclusion-generator-prices .button').attr('href') + '">Get expert editing help!</a>');
+    this.submit.text('New Rephrase');
     this.submit.attr('onclick', 'window.location.reload()');
 }
 

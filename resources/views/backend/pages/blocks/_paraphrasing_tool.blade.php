@@ -38,29 +38,29 @@
                     </div>
                     <div class="buttons">
                         <div class="top">
-                            <div class="clear-text">
+                            <button class="clear-text">
                                 <img src="{{ asset('/backend/img/delete.svg') }}" alt="delete">
-                            </div>
-                            <div class="action back-action">
+                            </button>
+                            <button class="action back-action" disabled="disabled">
                                 <img src="{{ asset('/backend/img/prev.svg') }}" alt="prev">
-                            </div>
-                            <div class="action next-action">
+                            </button>
+                            <button class="action next-action" disabled="disabled">
                                 <img src="{{ asset('/backend/img/next.svg') }}" alt="next">
-                            </div>
+                            </button>
                         </div>
                         <div class="bottom">
-                            <div class="copy-text">
+                            <button class="copy-text">
                                 <img src="{{ asset('/backend/img/copy.svg') }}" alt="copy">
                                 <div class="tooltip">Copied to clipboard</div>
-                            </div>
-                            <div class="download-text">
+                            </button>
+                            <button class="download-text">
                                 <img src="{{ asset('/backend/img/download.svg') }}" alt="download">
-                            </div>
+                            </button>
                         </div>
                     </div>
                 </div>
                 <div class="form-group">
-                    <input type="text" name="excludes" class="form-control" placeholder="{{ $block_content['input_placeholder'] ?? null }}">
+                    <textarea type="text" name="excludes" class="form-control" placeholder="{{ $block_content['input_placeholder'] ?? null }}"></textarea>
                 </div>
                 <div class="form-group radio-buttons"><div class="text"></div></div>
                 <div class="form-group submit">
