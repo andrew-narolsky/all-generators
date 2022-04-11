@@ -41,6 +41,14 @@
                                         <label for="exampleInputTitle" class="input__label">{{ __('Paraphrasing tool API key') }}</label>
                                         <input type="text" class="form-control input-style" name="paraphrasing_key" value="{{ str_replace('_', ' ', env('PARAPHRASING_API_KEY')) }}">
                                     </div>
+                                    <div class="form-group">
+                                        <label for="exampleInputTitle" class="input__label">{{ __('Essay maker API url') }}</label>
+                                        <input type="text" class="form-control input-style" name="essay_maker_url" value="{{ str_replace('_', ' ', env('ESSAY_MAKER_API_URL')) }}">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="exampleInputTitle" class="input__label">{{ __('Essay maker API key') }}</label>
+                                        <input type="text" class="form-control input-style" name="essay_maker_key" value="{{ str_replace('_', ' ', env('ESSAY_MAKER_API_KEY')) }}">
+                                    </div>
                                     <div class="form-group text-right">
                                         <button type="submit" class="btn btn-success btn-style mt-4">{{ __('Save') }}</button>
                                     </div>

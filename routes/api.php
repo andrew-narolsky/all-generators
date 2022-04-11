@@ -28,6 +28,13 @@ Route::post('/get-paraphrasing-tool-stars',
     [App\Http\Controllers\ParaphrasingTool\ParaphrasingToolController::class, 'getPageStars'])->middleware('api-token');
 Route::post('/set-paraphrasing-tool-stars',
     [App\Http\Controllers\ParaphrasingTool\ParaphrasingToolController::class, 'setPageStars'])->middleware('api-token');
+// Essay maker
+Route::post('/essay-maker',
+    [App\Http\Controllers\EssayMaker\EssayMakerController::class, 'essayMakerText'])->middleware('api-token');
+Route::post('/get-essay-maker-stars',
+    [App\Http\Controllers\EssayMaker\EssayMakerController::class, 'getPageStars'])->middleware('api-token');
+Route::post('/set-essay-maker-stars',
+    [App\Http\Controllers\EssayMaker\EssayMakerController::class, 'setPageStars'])->middleware('api-token');
 
 // Save document
 Route::post('/get-word-document-link', [App\Http\Controllers\DocumentController::class, 'getWordDocumentLink'])->middleware('api-token');

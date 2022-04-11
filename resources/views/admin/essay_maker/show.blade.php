@@ -1,6 +1,6 @@
 @extends('admin.master')
 
-@section('title', 'Paraphrasing tool')
+@section('title', 'Essay maker')
 
 @section('content')
     <div class="main-panel">
@@ -17,13 +17,13 @@
                             <i class="flaticon-right-arrow"></i>
                         </li>
                         <li class="nav-item">
-                            <a href="{{ route('admin.paraphrasing-tool.index') }}" style="color: #fff">{{ __('Paraphrasing tools') }}</a>
+                            <a href="{{ route('admin.essay-maker.index') }}" style="color: #fff">{{ __('Essay makers') }}</a>
                         </li>
                         <li class="separator">
                             <i class="flaticon-right-arrow"></i>
                         </li>
                         <li class="nav-item">
-                            <span>{{ __('Paraphrasing tool') }}</span>
+                            <span>{{ __('Essay maker') }}</span>
                         </li>
                     </ul>
                 </div>
@@ -33,7 +33,7 @@
                     <div class="col-12">
                         <div class="card">
                             <div class="card-body">
-                                {!! nl2br($paraphrasing->text) !!}
+                                {!! nl2br($essayMakers->text) !!}
                             </div>
                         </div>
                     </div>

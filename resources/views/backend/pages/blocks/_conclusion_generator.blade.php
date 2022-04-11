@@ -2,7 +2,7 @@
     $block_content = isset($block->pivot->id) && $block->content($block->pivot->id) ? unserialize($block->content($block->pivot->id)->text) : null;
 @endphp
 @if($block_content)
-    <div class="form">
+    <div class="conclusion-generator">
         <div class="wrap">
             <div class="h1">{!! $block_content['title'] ?? null !!}</div>
             @if($block_content['step_1'])

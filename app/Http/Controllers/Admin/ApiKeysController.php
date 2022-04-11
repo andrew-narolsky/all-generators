@@ -27,6 +27,8 @@ class ApiKeysController extends Controller
     {
         $this->envUpdate('PARAPHRASING_API_URL', $request->paraphrasing_url);
         $this->envUpdate('PARAPHRASING_API_KEY', $request->paraphrasing_key);
+        $this->envUpdate('ESSAY_MAKER_API_URL', $request->essay_maker_url);
+        $this->envUpdate('ESSAY_MAKER_API_KEY', $request->essay_maker_key);
         session()->flash('success', 'Settings was updated!');
         return redirect()->route('api-keys.index');
     }

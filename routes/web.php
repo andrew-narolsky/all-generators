@@ -25,10 +25,6 @@ Auth::routes([
     'verify' => false,
 ]);
 
-// Conclusion generator
-Route::post('/summarize-text', [App\Http\Controllers\ConclusionGenerator\ConclusionGeneratorController::class, 'summarizeText']);
-// Paraphrasing tool
-Route::post('/paraphrasing-text', [App\Http\Controllers\ParaphrasingTool\ParaphrasingToolController::class, 'paraphrasingText']);
 // Add votes
 Route::post('/add-vote', [App\Http\Controllers\Admin\PageController::class, 'addVote']);
 // Save document
@@ -51,6 +47,12 @@ Route::group([
     {
         Route::get('', [App\Http\Controllers\Admin\ParaphrasingToolController::class, 'index'])->name('admin.paraphrasing-tool.index');
         Route::get('{id}', [App\Http\Controllers\Admin\ParaphrasingToolController::class, 'show'])->name('admin.paraphrasing-tool.show');
+    });
+
+    Route::group(['prefix' => 'essay-maker'], function ()
+    {
+        Route::get('', [App\Http\Controllers\Admin\EssayMakerController::class, 'index'])->name('admin.essay-maker.index');
+        Route::get('{id}', [App\Http\Controllers\Admin\EssayMakerController::class, 'show'])->name('admin.essay-maker.show');
     });
 
     Route::resource('/pages', App\Http\Controllers\Admin\PageController::class, ['only' => ['index', 'create', 'store', 'edit', 'update', 'destroy']]);

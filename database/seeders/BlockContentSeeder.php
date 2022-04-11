@@ -15,7 +15,10 @@ class BlockContentSeeder extends Seeder
     public function run()
     {
         DB::table('block_contents')->insert([
-            // Conclusion generator
+
+            /**
+             * Conclusion generator
+             **/
             [
                 'text' => serialize([
                     'title' => '<span>Conclusion Generator:</span> Create Your Perfect Paper Summary In<span> 4 Easy Steps</span>',
@@ -182,7 +185,10 @@ class BlockContentSeeder extends Seeder
                 'created_at' => date('Y-m-d H:i:s'),
                 'updated_at' => date('Y-m-d H:i:s'),
             ],
-            // Paraphrasing tool
+
+            /**
+             * Paraphrasing tool
+             **/
             [
                 'text' => serialize([
                     'title' => 'Complete Your Paper in Just <span>4 Easy Steps</span> Using Our <span>Paraphrasing Tool</span>',
@@ -281,6 +287,113 @@ class BlockContentSeeder extends Seeder
                 ]),
                 'block_id' => 1,
                 'block_template_id' => 14,
+                'created_at' => date('Y-m-d H:i:s'),
+                'updated_at' => date('Y-m-d H:i:s'),
+            ],
+
+            /**
+            * Essay maker
+            **/
+            [
+                'text' => serialize([
+                    'title' => 'Professional <span>Essay Maker</span> Service',
+                    'sub_title' => 'Submit a test action request now and get an essay in 3 hours',
+                    'sub_title_2' => 'How to use essay generator',
+                    'sub_text' => 'Our free essay generator is an automated tool that will instantaneously provide you with a finished essay of up to 1000 words on any topic. Using it is effortless, and the whole process takes just a few steps:',
+                    'step_1' => 'Start by inputting your essay topic',
+                    'step_2' => 'Click on the "Create my essay" button to activate our essay creator',
+                    'step_3' => 'Receive your finished paper within seconds!',
+                    'input_placeholder' => 'Type keywords or essay title',
+                    'info_text' => 'Our essay generator is an automated tool, so we cannot guarantee 100% text uniqueness. Hire our professional essay writers for unique, authentic, high-quality essays.',
+                ]),
+                'block_id' => 9,
+                'block_template_id' => 15,
+                'created_at' => date('Y-m-d H:i:s'),
+                'updated_at' => date('Y-m-d H:i:s'),
+            ],
+            // Ratting
+            [
+                'text' => serialize([
+                    'title' => 'How Helpful It Was?',
+                ]),
+                'block_id' => 5,
+                'block_template_id' => 16,
+                'created_at' => date('Y-m-d H:i:s'),
+                'updated_at' => date('Y-m-d H:i:s'),
+            ],
+            // Information banner
+            [
+                'text' => serialize([
+                    'title' => 'How Can We Make a Perfect Academic Match?',
+                    'sub_title_1' => 'Your Unfinished Paper',
+                    'text_1' => 'You have your unfinished paper and cannot put all things together.',
+                    'sub_title_2' => 'Our Expert Editors and Writers',
+                    'text_2' => 'We have expert editors who can polish everything up or write a new one from scratch.',
+                ]),
+                'block_id' => 4,
+                'block_template_id' => 17,
+                'created_at' => date('Y-m-d H:i:s'),
+                'updated_at' => date('Y-m-d H:i:s'),
+            ],
+            // Price banner
+            [
+                'text' => serialize([
+                    'excerpt' => 'EQUALS',
+                    'content' => 'Your perfectly edited piece of writing starting at: <span>$ <span>8</span>.99 <span class="per-page">per page</span></span>',
+                    'button_link' => 'https://www.google.com/',
+                    'button_text' => 'Edit My Paper'
+                ]),
+                'block_id' => 3,
+                'block_template_id' => 18,
+                'created_at' => date('Y-m-d H:i:s'),
+                'updated_at' => date('Y-m-d H:i:s'),
+            ],
+            // Text block
+            [
+                'text' => serialize([
+                    'title' => 'Text About Essay maker and Benefits',
+                    'content' => '<h2>Essay Service That Cares</h2><p>There are many student services on the market that deliver similar academic assistance. The question is, are all of them credible enough. At Grab My Essay.com every customer gets more than fulfillment of write my essay for me request. Consider us as your personal writing consultant that is ready to help you and save your grades 24/7. Every team member is your friend, adviser, and friend who indeed cares about your college performance.</p><h3>Two General APA Concepts</h3><ol><li>Firstly, an APA style paper can be used for scientific research papers in order to present an existing and proven theory. This means that the paper must be written using present perfect or past tense when quoting and citing sources.</li><li>Secondly, an APA format research paper prioritizes the year of the publication. It should always be featured after each name sourced in the paper.</li></ol><p>For example:<br />&ldquo;Harrison (1997) posited that women were programmed to nurture their young.&rdquo;</p><p>When writing an abstract, it is best to remember that this is the most eye-catching part of the paper. The content, although condensed, must be accurate and readable. There is no need to add a paragraph indentation on this page.</p><p>While all this information may seem like a lot, in fact, it offers a rigid framework that structurizes your writing thus making it easier to digest. If you find formatting your paper difficult, use&nbsp;<a href="http://localhost/conclusion-generator#">EdTech</a>&nbsp;tools. With their help, you&#39;ll research information faster and process it easier. They also can help you memorize the APA formatting rules.</p><p>The APA Style can be used for different types of papers, such as essays, theses, dissertations, etc. You can also use these for&nbsp;<a href="http://localhost/conclusion-generator#">argumentative research paper topics</a>, expository essays for minor subjects and any more. Once you get used to this style of writing, you won&rsquo;t have to refer back to the style guides as much.</p><h2>What is the APA Style?</h2><p>The American Psychological Association or APA research format is a writing method recommended by the aforementioned organization. This is usually used in social science subjects and is written using two general concepts.</p><h3>Practical Rules for of the Research Paper</h3><p>When writing an abstract, it is best to remember that this is the most eye-catching part of the paper. The content, although condensed, must be accurate and readable. There is no need to add a paragraph indentation on this page.</p><p>While all this information may seem like a lot, in fact, it offers a rigid framework that structurizes your writing thus making it easier to digest. If you find formatting your paper difficult, use EdTech tools. With their help, you&#39;ll research information faster and process it easier. They also can help you memorize the APA formatting rules.</p><p>The APA Style can be used for different types of papers, such as essays, theses, dissertations, etc. You can also use these for argumentative research paper topics, expository essays for minor subjects and any more. Once you get used to this style of writing, you won&rsquo;t have to refer back to the style guides as much.</p><h3>Basic Writing Rules for APA Style</h3><p>When writing an abstract, it is best to remember that this is the most eye-catching part of the paper. The content, although condensed, must be accurate and readable. There is no need to add a paragraph indentation on this page.</p><p>While all this information may seem like a lot, in fact, it offers a rigid framework that your writing thus making it easier to digest. If you find formatting your paper difficult, use EdTech tools. With their help, you&#39;ll research information faster and process it easier.</p>',
+                ]),
+                'block_id' => 2,
+                'block_template_id' => 19,
+                'created_at' => date('Y-m-d H:i:s'),
+                'updated_at' => date('Y-m-d H:i:s'),
+            ],
+            // FAQ
+            [
+                'text' => serialize([
+                    'title' => 'Frequently Asked Questions',
+                    'subtitle' => '',
+                    'faq' => [
+                        1 => [
+                            'question' => 'How do you write a good conclusion?',
+                            'answer' => '<p>By knowing academic rules and following them. The conclusion is a 10%-long essay part that has to restate major findings from your paper. It should be original yet concise.</p>'
+                        ],
+                        2 => [
+                            'question' => 'What is a conclusion generator?',
+                            'answer' => '<p>Concluding paragraph generator is a tool or an expert who could produce conclusion on the basis of the text you wrote. This could be automatic or customized work: the decision is up to you.</p>'
+                        ],
+                        3 => [
+                            'question' => 'What is the best free conclusion generator?',
+                            'answer' => '<p>Among free generators, we could recommend Summarizing-Tool. It is as effective as an online machine could be. But of course, human help still has better quality.</p>'
+                        ]
+                    ]
+                ]),
+                'block_id' => 8,
+                'block_template_id' => 20,
+                'created_at' => date('Y-m-d H:i:s'),
+                'updated_at' => date('Y-m-d H:i:s'),
+            ],
+            // Banner
+            [
+                'text' => serialize([
+                    'title' => 'Need Professional Editing Services?',
+                    'content' => '<p>Maecenas a hendrerit diam. Etiam vulputate lacinia turpis ac lacinia. Nam auctor libero eu viverra eleifend. Donec non imperdiet erat, sit amet interdum l</p>',
+                    'button_link' => 'https://www.google.com/',
+                    'button_text' => 'Edit My Paper'
+                ]),
+                'block_id' => 1,
+                'block_template_id' => 21,
                 'created_at' => date('Y-m-d H:i:s'),
                 'updated_at' => date('Y-m-d H:i:s'),
             ]

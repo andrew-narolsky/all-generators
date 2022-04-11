@@ -155,6 +155,11 @@
                                         <span class="sub-item">{{ __('Paraphrasing tools') }}</span>
                                     </a>
                                 </li>
+                                <li>
+                                    <a href="{{ route('admin.essay-maker.index') }}">
+                                        <span class="sub-item">{{ __('Essay maker') }}</span>
+                                    </a>
+                                </li>
                             </ul>
                         </div>
                     </li>

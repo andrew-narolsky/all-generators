@@ -62,6 +62,12 @@ class BlockSeeder extends Seeder
                 'title' => 'FAQ',
                 'created_at' => date('Y-m-d H:i:s'),
                 'updated_at' => date('Y-m-d H:i:s'),
+            ],
+            // 9
+            [
+                'title' => 'Essay maker',
+                'created_at' => date('Y-m-d H:i:s'),
+                'updated_at' => date('Y-m-d H:i:s'),
             ]
         ]);
     }

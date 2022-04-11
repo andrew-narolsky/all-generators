@@ -15,23 +15,14 @@
             @endif
             <form class="paraphrasing_tool">
                 @csrf
-                <div class="form-group text-wrap">
+                <div class="form-group text-wrap textarea-wrap">
                     <input type="hidden" id="text">
                     <textarea class="form-control" name="text" rows="3" placeholder="{{ $block_content['textarea_placeholder'] ?? null }}"></textarea>
-                    <div class="result-text"></div>
-                    <div class="flex__wrap links-wrap">
-                        <div class="words-count">Words: <span>0</span></div>
-                        <div class="download-links">
-                            <a href="#" class="pdf" download="download">
-                                <img src="{{ asset('/backend/img/pdf.png') }}" alt="pdf">
-                            </a>
-                            <a href="#" class="doc" download="download">
-                                <img src="{{ asset('/backend/img/doc.png') }}" alt="doc">
-                            </a>
-                            <a href="#" class="docx" download="download">
-                                <img src="{{ asset('/backend/img/docx.png') }}" alt="docx">
-                            </a>
-                        </div>
+                    <div class="result-text-wrap">
+                        <div class="result-text"></div>
+                    </div>
+                    <div class="words-count-wrap">
+                        <div class="words-count">Characters: <span>0</span></div>
                     </div>
                     <div class="svg-loader">
                         <img src="{{ asset('/backend/img/svg-loader.svg') }}" alt="loader">
@@ -40,6 +31,7 @@
                         <div class="top">
                             <button class="clear-text">
                                 <img src="{{ asset('/backend/img/delete.svg') }}" alt="delete">
+                                <div class="tooltip">Clear all text</div>
                             </button>
                             <button class="action back-action" disabled="disabled">
                                 <img src="{{ asset('/backend/img/prev.svg') }}" alt="prev">
@@ -53,16 +45,36 @@
                                 <img src="{{ asset('/backend/img/copy.svg') }}" alt="copy">
                                 <div class="tooltip">Copied to clipboard</div>
                             </button>
-                            <button class="download-text">
-                                <img src="{{ asset('/backend/img/download.svg') }}" alt="download">
-                            </button>
+                            <div class="download-text">
+                                <button>
+                                    <img src="{{ asset('/backend/img/download.svg') }}" alt="download">
+                                </button>
+                                <div class="tooltip">
+                                    <div class="download-links">
+                                        <a href="#" class="pdf" download="download" target="_blanck">
+                                            <img src="{{ asset('/backend/img/pdf.svg') }}" alt="pdf">
+                                        </a>
+                                        <a href="#" class="doc" download="download" target="_blanck">
+                                            <img src="{{ asset('/backend/img/doc.svg') }}" alt="doc">
+                                        </a>
+                                        <a href="#" class="docx" download="download" target="_blanck">
+                                            <img src="{{ asset('/backend/img/docx.svg') }}" alt="docx">
+                                        </a>
+                                    </div>
+                                    <div class="close-tooltip">
+                                        <img src="{{ asset('/backend/img/cross.svg') }}" alt="cross">
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
-                <div class="form-group">
-                    <textarea type="text" name="excludes" class="form-control" placeholder="{{ $block_content['input_placeholder'] ?? null }}"></textarea>
+                <div class="form-group input-wrap">
+                    <textarea type="text" name="excludes" class="form-control input" placeholder="{{ $block_content['input_placeholder'] ?? null }}"></textarea>
                 </div>
-                <div class="form-group radio-buttons"><div class="text"></div></div>
+                <div class="form-group radio-buttons">
+                    <div class="text">Need better results? <a href="#">Get expert editing help!</a></div>
+                </div>
                 <div class="form-group submit">
                     <button type="submit" class="button black" id="summarize-button">{{ __('Rephrase') }}</button>
                 </div>

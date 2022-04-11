@@ -25,6 +25,9 @@
             @case(8)
                 @include('admin.pages.blocks._faq')
             @break
+            @case(9)
+                @include('admin.pages.blocks._essay_maker')
+            @break
         @endswitch
     @endforeach
 @endif

@@ -4,7 +4,7 @@
 @if($block_content)
     <div class="ideal-match mt-0">
         <div class="wrap">
-            <div class="prices">
+            <div class="conclusion-generator-prices">
                 <div class="subtitle">{{ $block_content['excerpt'] ?? null }}</div>
                 <div class="title">{!! $block_content['content'] ?? null !!}</div>
                 <a href="{{ $block_content['button_link'] ?? null }}" class="button green">{{ $block_content['button_text'] ?? null }}</a>

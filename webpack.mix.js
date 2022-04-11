@@ -11,14 +11,26 @@ const mix = require('laravel-mix');
  |
  */
 
+// // backend
+// mix.styles([
+//     'resources/backend/css/style.css',
+//     'resources/backend/css/header.css',
+//     'resources/backend/css/footer.css',
+//     'resources/backend/css/faq.css',
+//     'resources/backend/css/conclusion-generator.css',
+//     'resources/backend/scss/paraphrasing-tool.scss',
+//     // 'resources/backend/css/paraphrasing-tool.css',
+//     'resources/backend/css/essay-maker.css',
+// ], 'public/backend/css/style.min.css');
+
 // backend
-mix.styles([
-    'resources/backend/css/style.css',
-    'resources/backend/css/header.css',
-    'resources/backend/css/footer.css',
-    'resources/backend/css/faq.css',
-    'resources/backend/css/paraphrasing-tool.css',
-], 'public/backend/css/style.min.css');
+mix.sass('resources/backend/scss/paraphrasing-tool.scss', 'public/backend/css/style.min.css')
+    .css('resources/backend/css/style.css', 'public/backend/css/style.min.css')
+    .css('resources/backend/css/header.css', 'public/backend/css/style.min.css')
+    .css('resources/backend/css/footer.css','public/backend/css/style.min.css')
+    .css('resources/backend/css/faq.css', 'public/backend/css/style.min.css')
+    .css('resources/backend/css/conclusion-generator.css', 'public/backend/css/style.min.css')
+    .css('resources/backend/css/essay-maker.css', 'public/backend/css/style.min.css');
 
 mix.scripts([
     'resources/backend/js/jquery.js',
@@ -27,6 +39,7 @@ mix.scripts([
     'resources/admin/js/plugin/sweetalert/sweetalert.min.js',
     'resources/backend/js/conclusion-generator.js',
     'resources/backend/js/paraphrasing-tool.js',
+    'resources/backend/js/essay-maker.js',
 ], 'public/backend/js/script.min.js');
 
 mix.copyDirectory('resources/backend/img', 'public/backend/img');

@@ -678,16 +678,6 @@
     padding: 31px 0;
 }
 
-.cabinet__messages {
-    width: 28px;
-    height: 28px;
-    border: 1px solid #E7E7D8;
-    background: #fff url(../img/message-fill.svg) 50% 50% no-repeat;
-    border-radius: 50%;
-    position: relative;
-    display: none !important;
-}
-
 .cabinet__messages-count {
     width: 16px;
     height: 16px;
