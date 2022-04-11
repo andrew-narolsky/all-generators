@@ -1,6 +1,6 @@
 @extends('admin.master')
 
-@section('title', 'Paraphrasing tool')
+@section('title', 'Conclusion generator')
 
 @section('content')
     <div class="main-panel">
@@ -17,13 +17,13 @@
                             <i class="flaticon-right-arrow"></i>
                         </li>
                         <li class="nav-item">
-                            <a href="{{ route('admin.paraphrasing-tool.index') }}" style="color: #fff">{{ __('Paraphrasing tools') }}</a>
+                            <a href="{{ route('admin.conclusion-generator.index') }}" style="color: #fff">{{ __('Conclusion generator') }}</a>
                         </li>
                         <li class="separator">
                             <i class="flaticon-right-arrow"></i>
                         </li>
                         <li class="nav-item">
-                            <span>{{ __('Paraphrasing tool') }}</span>
+                            <span>{{ __('Conclusion generator') }}</span>
                         </li>
                     </ul>
                 </div>
@@ -33,7 +33,7 @@
                     <div class="col-12">
                         <div class="card">
                             <div class="card-body">
-                                {!! nl2br($paraphrasing->text) !!}
+                                {!! nl2br($conclusion->text) !!}
                             </div>
                         </div>
                     </div>
