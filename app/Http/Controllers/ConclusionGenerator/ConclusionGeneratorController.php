@@ -2,32 +2,34 @@
 
 namespace App\Http\Controllers\ConclusionGenerator;
 
+use App\Http\Controllers\GeneratorController;
+use App\Models\Attempt;
 use App\Models\ConclusionGenerator;
 use App\Models\Page;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
+use JetBrains\PhpStorm\Pure;
 
-class ConclusionGeneratorController extends Controller
+class ConclusionGeneratorController extends GeneratorController
 {
     const MINIMUM_SENTENCES_LIMIT = 5;
     const MINIMUM_WORDS_LIMIT = 200;
-    const CONCLUSION_GENERATOR_PAGE_ID = 1;
+    const GENERATOR_PAGE_ID = 1;
 
-    public function getPageStars()
+    protected object $validator;
+    protected object $conclusionGenerator;
+
+    #[Pure]
+    public function __construct(Page $page, Attempt $attempt, Validator $validator, Carbon $carbon, ConclusionGenerator $conclusionGenerator)
     {
-        $page = Page::select('count_votes', 'stars')->find(self::CONCLUSION_GENERATOR_PAGE_ID);
-        return $page;
+        parent::__construct($page, $attempt, $carbon, self::GENERATOR_PAGE_ID);
+
+        $this->validator = $validator;
+        $this->conclusionGenerator = $conclusionGenerator;
     }
 
-    public function setPageStars()
-    {
-        $page = Page::find(self::CONCLUSION_GENERATOR_PAGE_ID);
-        $page->update(['count_votes' => ($page->count_votes + 1)]);
-        return $page->count_votes;
-    }
-
-    public function summarizeText(Request $request)
+    public function summarizeText(Request $request) : object
     {
         $data = $request->only('title', 'text', 'count');
 
@@ -44,7 +46,7 @@ class ConclusionGeneratorController extends Controller
             'text.max' => '15000 characters MAX.',
         ];
 
-        $validator = Validator::make($data, $rules, $message);
+        $validator = $this->validator::make($data, $rules, $message);
 
         if ($validator->fails()) {
             return response()->json( ['errors' => $validator->errors()], 422);
@@ -82,7 +84,7 @@ class ConclusionGeneratorController extends Controller
                 $text = $items[$keys];
             }
 
-            ConclusionGenerator::create([
+            $this->conclusionGenerator::create([
                 'title' => $data['title'],
                 'text' => $data['text'],
             ]);
