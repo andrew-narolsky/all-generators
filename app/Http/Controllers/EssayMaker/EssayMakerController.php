@@ -69,10 +69,10 @@ class EssayMakerController extends GeneratorController
             ], 401);
         }
 
-//        $this->attempt::create([
-//            'API' => $request->ip(),
-//            'tool' => self::GENERATOR_PAGE_ID,
-//        ]);
+        $this->attempt::create([
+            'API' => $request->ip(),
+            'tool' => self::GENERATOR_PAGE_ID,
+        ]);
 
 //        $result = $this->http::asForm()->post(env('ESSAY_MAKER_API_URL'), [
 //            'apikey' => env('ESSAY_MAKER_API_KEY'),
