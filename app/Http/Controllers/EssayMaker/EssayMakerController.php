@@ -12,7 +12,6 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Validator;
-use JetBrains\PhpStorm\Pure;
 
 class EssayMakerController extends GeneratorController
 {
@@ -22,8 +21,8 @@ class EssayMakerController extends GeneratorController
     protected object $essayMaker;
     protected object $http;
     protected object $mail;
+    protected object $errorMail;
 
-    #[Pure]
     public function __construct(Page $page, Attempt $attempt, Validator $validator, Carbon $carbon, EssayMaker $essayMaker, Http $http, Mail $mail)
     {
         parent::__construct($page, $attempt, $carbon, self::GENERATOR_PAGE_ID);
@@ -32,10 +31,10 @@ class EssayMakerController extends GeneratorController
         $this->essayMaker = $essayMaker;
         $this->http = $http;
         $this->mail = $mail;
+        $this->errorMail = new ErrorMail(env('ESSAY_MAKER_API_URL'));
     }
 
-    public function essayMakerText(Request $request) : object
-    {
+    public function getResultText(Request $request) : object {
         $data = $request->only('text');
 
         $rules = [
@@ -92,7 +91,7 @@ class EssayMakerController extends GeneratorController
 
         if (isset(json_decode($result)->error)) {
             // send mail
-            $this->mail::to(env('ADMIN_EMAIL'))->send(new ErrorMail(env('ESSAY_MAKER_API_URL')));
+            $this->mail::to(env('ADMIN_EMAIL'))->send($this->errorMail);
             return response()->json([
                 'errors' => [
                     'text' => 'Error! Try later'

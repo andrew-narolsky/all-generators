@@ -9,7 +9,6 @@ use App\Models\Page;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
-use JetBrains\PhpStorm\Pure;
 
 class ConclusionGeneratorController extends GeneratorController
 {
@@ -20,7 +19,6 @@ class ConclusionGeneratorController extends GeneratorController
     protected object $validator;
     protected object $conclusionGenerator;
 
-    #[Pure]
     public function __construct(Page $page, Attempt $attempt, Validator $validator, Carbon $carbon, ConclusionGenerator $conclusionGenerator)
     {
         parent::__construct($page, $attempt, $carbon, self::GENERATOR_PAGE_ID);
@@ -29,8 +27,7 @@ class ConclusionGeneratorController extends GeneratorController
         $this->conclusionGenerator = $conclusionGenerator;
     }
 
-    public function summarizeText(Request $request) : object
-    {
+    public function getResultText(Request $request) : object {
         $data = $request->only('title', 'text', 'count');
 
         $rules = [

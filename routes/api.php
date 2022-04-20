@@ -16,21 +16,21 @@ use Illuminate\Support\Facades\Route;
 
 // Conclusion generator
 Route::post('/summarize-text',
-    [App\Http\Controllers\ConclusionGenerator\ConclusionGeneratorController::class, 'summarizeText'])->middleware('api-token');
+    [App\Http\Controllers\ConclusionGenerator\ConclusionGeneratorController::class, 'getResultText'])->middleware('api-token');
 Route::post('/get-conclusion-generator-stars',
     [App\Http\Controllers\ConclusionGenerator\ConclusionGeneratorController::class, 'getPageStars'])->middleware('api-token');
 Route::post('/set-conclusion-generator-stars',
     [App\Http\Controllers\ConclusionGenerator\ConclusionGeneratorController::class, 'setPageStars'])->middleware('api-token');
 // Paraphrasing tool
 Route::post('/paraphrasing-text',
-    [App\Http\Controllers\ParaphrasingTool\ParaphrasingToolController::class, 'paraphrasingText'])->middleware('api-token');
+    [App\Http\Controllers\ParaphrasingTool\ParaphrasingToolController::class, 'getResultText'])->middleware('api-token');
 Route::post('/get-paraphrasing-tool-stars',
     [App\Http\Controllers\ParaphrasingTool\ParaphrasingToolController::class, 'getPageStars'])->middleware('api-token');
 Route::post('/set-paraphrasing-tool-stars',
     [App\Http\Controllers\ParaphrasingTool\ParaphrasingToolController::class, 'setPageStars'])->middleware('api-token');
 // Essay maker
 Route::post('/essay-maker',
-    [App\Http\Controllers\EssayMaker\EssayMakerController::class, 'essayMakerText'])->middleware('api-token');
+    [App\Http\Controllers\EssayMaker\EssayMakerController::class, 'getResultText'])->middleware('api-token');
 Route::post('/get-essay-maker-stars',
     [App\Http\Controllers\EssayMaker\EssayMakerController::class, 'getPageStars'])->middleware('api-token');
 Route::post('/set-essay-maker-stars',

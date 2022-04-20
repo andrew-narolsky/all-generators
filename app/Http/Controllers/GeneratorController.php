@@ -5,8 +5,9 @@ namespace App\Http\Controllers;
 use App\Models\Attempt;
 use App\Models\Page;
 use Carbon\Carbon;
+use Illuminate\Http\Request;
 
-class GeneratorController extends Controller
+abstract class GeneratorController extends Controller
 {
     protected object $attempt;
     protected object $carbon;
@@ -21,6 +22,8 @@ class GeneratorController extends Controller
         $this->carbon = $carbon;
         $this->id = $id;
     }
+
+    abstract public function getResultText(Request $request) : object;
 
     public function getPageStars() : object
     {

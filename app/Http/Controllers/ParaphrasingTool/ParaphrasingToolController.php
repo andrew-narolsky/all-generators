@@ -2,34 +2,39 @@
 
 namespace App\Http\Controllers\ParaphrasingTool;
 
-use App\Http\Controllers\Controller;
+use App\Http\Controllers\GeneratorController;
+use App\Mail\ErrorMail;
 use App\Models\Attempt;
 use App\Models\Page;
 use App\Models\ParaphrasingTool;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Validator;
 
-class ParaphrasingToolController extends Controller
+class ParaphrasingToolController extends GeneratorController
 {
-    const CONCLUSION_GENERATOR_PAGE_ID = 2;
+    const GENERATOR_PAGE_ID = 2;
 
-    public function getPageStars()
+    protected object $validator;
+    protected object $paraphrasingTool;
+    protected object $http;
+    protected object $mail;
+    protected object $errorMail;
+
+    public function __construct(Page $page, Attempt $attempt, Validator $validator, Carbon $carbon, ParaphrasingTool $paraphrasingTool, Http $http, Mail $mail)
     {
-        $page = Page::select('count_votes', 'stars')->find(self::CONCLUSION_GENERATOR_PAGE_ID);
-        return $page;
+        parent::__construct($page, $attempt, $carbon, self::GENERATOR_PAGE_ID);
+
+        $this->validator = $validator;
+        $this->paraphrasingTool = $paraphrasingTool;
+        $this->http = $http;
+        $this->mail = $mail;
+        $this->errorMail = new ErrorMail(env('PARAPHRASING_API_URL'));
     }
 
-    public function setPageStars()
-    {
-        $page = Page::find(self::CONCLUSION_GENERATOR_PAGE_ID);
-        $page->update(['count_votes' => ($page->count_votes + 1)]);
-        return $page->count_votes;
-    }
-
-    public function paraphrasingText(Request $request)
-    {
+    public function getResultText(Request $request) : object {
         $data = $request->only('text');
 
         $rules = [
@@ -42,7 +47,7 @@ class ParaphrasingToolController extends Controller
             'text.max' => '5000 characters MAX.',
         ];
 
-        $validator = Validator::make($data, $rules, $message);
+        $validator = $this->validator::make($data, $rules, $message);
 
         if ($validator->fails()) {
             return response()->json(['errors' => $validator->errors()], 422);
@@ -56,35 +61,45 @@ class ParaphrasingToolController extends Controller
             ], 422);
         }
 
-//        if ($this->getAttemptsCount($request->ip(), self::CONCLUSION_GENERATOR_PAGE_ID) > 3) {
-//            return response()->json([
-//                'errors' => [
-//                    'text' => 'You reached your daily limit of 3 paraphrasing inquiries',
-//                ]
-//            ], 401);
-//        }
+        if ($this->getAttemptsCount($request->ip(), self::GENERATOR_PAGE_ID) > 3) {
+            return response()->json([
+                'errors' => [
+                    'text' => 'You reached your daily limit of 3 paraphrasing inquiries',
+                ]
+            ], 401);
+        }
 
-//        Attempt::create([
-//            'API' => $request->ip(),
-//            'tool' => self::CONCLUSION_GENERATOR_PAGE_ID,
-//        ]);
-//
-//        ParaphrasingTool::create([
-//            'text' => $data['text'],
-//        ]);
+        $this->attempt::create([
+            'API' => $request->ip(),
+            'tool' => self::GENERATOR_PAGE_ID,
+        ]);
 
-        $response = Http::asForm()->post(env('PARAPHRASING_API_URL'), [
+        $this->paraphrasingTool::create([
+            'text' => $data['text'],
+        ]);
+
+        $response = $this->http::asForm()->post(env('PARAPHRASING_API_URL'), [
             'key' => env('PARAPHRASING_API_KEY'),
             'data' => $request->get('text'),
             'lang' => 'en',
             'mode' => 'Simple',
         ]);
 
+        if (isset(json_decode($response)->error)) {
+            // send mail
+            $this->mail::to(env('ADMIN_EMAIL'))->send($this->errorMail);
+            return response()->json([
+                'errors' => [
+                    'text' => 'Error! Try later'
+                ]
+            ], 422);
+        }
+
         // excludes
         $excludes = $request->get('excludes');
         $array_excludes = array_map('trim', explode(',', $excludes));
         if ($excludes) {
-            return json_encode([
+            return response()->json([
                 'paraphrasedContent' => $this->removeExcludesWords($response, $array_excludes)
             ]);
         } else {
@@ -92,17 +107,7 @@ class ParaphrasingToolController extends Controller
         }
     }
 
-    protected function isUseCyrillicText($text)
-    {
-        return preg_match('/[а-яё]/i', $text);
-    }
-
-    protected function getAttemptsCount($ip, $tool)
-    {
-        return Attempt::where('API', $ip)->where('tool', $tool)->whereDate('created_at', Carbon::today())->get()->count();
-    }
-
-    protected function removeExcludesWords($response, $array_excludes)
+    protected function removeExcludesWords($response, $array_excludes) : string
     {
         $explode = explode('</b>', json_decode(preg_replace('/[\x00-\x1F\x80-\xFF]/', '', $response), false)->paraphrasedContent);
         // exclude words
