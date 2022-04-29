@@ -60,18 +60,18 @@ class EssayMakerController extends GeneratorController
             ], 422);
         }
 
-        if ($this->getAttemptsCount($request->ip(), self::GENERATOR_PAGE_ID) > 3) {
-            return response()->json([
-                'errors' => [
-                    'text' => 'You reached your daily limit of 3 paraphrasing inquiries',
-                ]
-            ], 401);
-        }
-
-        $this->attempt::create([
-            'API' => $request->ip(),
-            'tool' => self::GENERATOR_PAGE_ID,
-        ]);
+//        if ($this->getAttemptsCount($request->ip(), self::GENERATOR_PAGE_ID) > 3) {
+//            return response()->json([
+//                'errors' => [
+//                    'text' => 'You reached your daily limit of 3 paraphrasing inquiries',
+//                ]
+//            ], 401);
+//        }
+//
+//        $this->attempt::create([
+//            'API' => $request->ip(),
+//            'tool' => self::GENERATOR_PAGE_ID,
+//        ]);
 
 //        $result = $this->http::asForm()->post(env('ESSAY_MAKER_API_URL'), [
 //            'apikey' => env('ESSAY_MAKER_API_KEY'),
