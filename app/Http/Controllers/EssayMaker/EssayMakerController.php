@@ -73,21 +73,11 @@ class EssayMakerController extends GeneratorController
 //            'tool' => self::GENERATOR_PAGE_ID,
 //        ]);
 
-//        $result = $this->http::asForm()->post(env('ESSAY_MAKER_API_URL'), [
-//            'apikey' => env('ESSAY_MAKER_API_KEY'),
-//            'keyword' => $request->get('text'),
-//            'wordcount' => 1000,
-//        ]);
-
-        $result = '{
-            "result": "The US will start screening at three airports for passengers with the mysterious, novel poison begin in Wuhan........",
-            "wordcount": 1530,
-            "instanceID": "5e2aa7f45c01a",
-            "executionTime": 10.403473854065,
-            "computeTime": 10.402873039246,
-            "responseID": "7090c0a12fe38f775be9e5feba0f2327",
-            "quota": 9979
-        }';
+        $result = $this->http::asForm()->post(env('ESSAY_MAKER_API_URL'), [
+            'apikey' => env('ESSAY_MAKER_API_KEY'),
+            'keyword' => $request->get('text'),
+            'wordcount' => 400,
+        ]);
 
         if (isset(json_decode($result)->error)) {
             // send mail
